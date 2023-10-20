@@ -1,4 +1,4 @@
-import { wrapItem } from "prosemirror-menu"
+import { blockTypeItem } from "prosemirror-menu"
 import { textblockTypeInputRule } from "prosemirror-inputrules"
 
 export const name = "information_callout"
@@ -13,7 +13,7 @@ export const schema = {
 
 export const buildMenu = ({ menu, schema }) => {
   menu.typeMenu.content.push(
-    wrapItem(schema.nodes[name], {
+    blockTypeItem(schema.nodes[name], {
       label: "Information callout"
     })
   )
