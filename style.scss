@@ -12,6 +12,7 @@
 @import "prosemirror-menu/style/menu.css";
 @import "./scss/prosemirror-example-setup";
 @import "prosemirror-gapcursor/style/gapcursor.css";
+@import "prosemirror-tables/style/tables.css";
 
 :root {
   font-family: system-ui, sans-serif;
@@ -31,4 +32,13 @@
 .ProseMirror {
   padding: 1rem;
   outline: none;
+}
+
+#editor .govspeak table {
+  display: table;
+
+  td {
+    border: 1px dotted $govuk-border-colour;
+    padding: 10px;
+  }
 }
