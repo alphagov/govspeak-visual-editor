@@ -1,0 +1,62 @@
+.ProseMirror {
+  counter-reset: prosemirror-footnote;
+}
+
+footnote {
+  display: inline-block;
+  cursor: pointer;
+}
+
+footnote::before {
+  content: "[footnote " counter(prosemirror-footnote) "]";
+  color: $govuk-link-colour;
+  vertical-align: super;
+  font-size: 75%;
+  counter-increment: prosemirror-footnote;
+}
+
+.ProseMirror-hideselection .footnote-tooltip *::selection {
+  background-color: transparent;
+}
+
+.ProseMirror-hideselection .footnote-tooltip *::-moz-selection {
+  background-color: transparent;
+}
+
+.footnote-tooltip {
+  cursor: auto;
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  margin-top: 3px;
+  background: #fff;
+  padding: 3px;
+  border: 2px solid $govuk-input-border-colour;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footnote-tooltip:after,
+.footnote-tooltip:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  left: calc(var(--arrow-left) - 1rem - 5px);
+}
+
+.footnote-tooltip:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 5px;
+  margin-left: -5px;
+}
+
+.footnote-tooltip:before {
+  border-color: rgba(11, 12, 12, 0);
+  border-bottom-color: $govuk-input-border-colour;
+  border-width: 8px;
+  margin-left: -8px;
+}
