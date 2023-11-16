@@ -10,6 +10,11 @@
 <body>
   <div id="content" hidden>
     <p>Hello world, this is the ProseMirror editor.</p>
+    <ol>
+      <li><p>First</p></li>
+      <li><p>Second</p></li>
+      <li><p>Third</p></li>
+    </ol>
     <div class="call-to-action">
       <p>Call to action</p>
     </div>
@@ -20,7 +25,10 @@
       <p>This is an information callout</p>
     </div>
   </div>
-  <div id="editor"></div>
+  <div id="container">
+    <div id="editor"></div>
+    <pre id="markdown"></pre>
+  </div>
   <script type="module" src="/main.js"></script>
 </body>
 
