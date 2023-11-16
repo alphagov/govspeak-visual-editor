@@ -17,15 +17,35 @@
   font-family: system-ui, sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  align-items: stretch;
+  width:100vw;
+}
+
 #editor,
-.editor {
+.editor,
+pre {
   background: white;
   color: black;
   background-clip: padding-box;
   border-radius: 4px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   padding: 5px 0;
-  margin-bottom: 23px;
+  margin: 20px;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+pre {
+  margin-left:0;
+  padding: 15px;
+  padding-top: 50px;
+  font-size: 16px;
 }
 
 .ProseMirror {

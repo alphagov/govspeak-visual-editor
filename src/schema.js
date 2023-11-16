@@ -1,6 +1,6 @@
 import { addListNodes } from "prosemirror-schema-list"
 import { Schema } from "prosemirror-model"
-import { schema as basicSchema } from "prosemirror-schema-basic"
+import { schema as basicSchema } from "prosemirror-markdown"
 import customNodes from "./nodes"
 
 // Use basic schema which roughly corresponds to the CommonMark schema
