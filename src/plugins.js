@@ -2,9 +2,13 @@ import { buildMenuItems, exampleSetup } from "prosemirror-example-setup"
 import { inputRules } from "prosemirror-inputrules"
 import { Plugin } from "prosemirror-state"
 import customNodes from "./nodes"
+import { addTablePlugins, buildTableMenu } from "./tables"
 
 const buildMenu = (schema) => {
   const menu = buildMenuItems(schema);
+
+  // Add table menu items
+  buildTableMenu({ menu, schema })
 
   // Add menu items from custom nodes
   customNodes.forEach((node) => {
@@ -32,6 +36,9 @@ export default (options) => {
       attributes: { class: "govspeak" }
     }
   }));
+
+  // Add plugins for table editing
+  addTablePlugins(plugins);
 
   // Input rules for custom nodes
   plugins.push(customInputRules(options.schema));
