@@ -19,6 +19,7 @@ Govspeak is a flavour of Markdown used for publishing content on [GOV.UK].
    ```
    npm run dev
    ```
+4. Open the [example editor](http://localhost:5173/examples/)
 
 ## Editor overview
 
