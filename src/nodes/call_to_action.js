@@ -23,3 +23,10 @@ export const inputRules = (schema) => ([
   // $CTA Call to action
   wrappingInputRule(/^\$CTA\s$/, schema.nodes[name]),
 ])
+
+export const toGovspeak = (state, node) => {
+  state.write("$CTA\n\n")
+  state.renderInline(node)
+  state.write("$CTA")
+  state.closeBlock(node)
+}

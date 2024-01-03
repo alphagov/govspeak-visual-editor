@@ -23,3 +23,10 @@ export const inputRules = (schema) => ([
   // % Warning callout
   textblockTypeInputRule(/^%\s$/, schema.nodes[name]),
 ])
+
+export const toGovspeak = (state, node) => {
+  state.write("%")
+  state.renderInline(node, false)
+  state.write("%")
+  state.closeBlock(node)
+}
