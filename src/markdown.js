@@ -1,6 +1,6 @@
 import { MarkdownSerializer } from "prosemirror-markdown"
 
-export const markdownSerializer = new MarkdownSerializer({
+const defaultNodes = {
   blockquote(state, node) {
     state.wrapBlock("> ", null, node, () => state.renderContent(node))
   },
@@ -58,25 +58,15 @@ export const markdownSerializer = new MarkdownSerializer({
   text(state, node) {
     state.text(node.text, !state.inAutolink)
   },
-  call_to_action(state, node) {
-    state.write("$CTA\n\n")
-    state.renderInline(node)
-    state.write("$CTA")
-    state.closeBlock(node)
-  },
-  warning_callout(state, node) {
-    state.write("%")
-    state.renderInline(node, false)
-    state.write("%")
-    state.closeBlock(node)
-  },
-  information_callout(state, node) {
-    state.write("^")
-    state.renderInline(node, false)
-    state.write("^")
-    state.closeBlock(node)
-  },
-}, {
+}
+
+const globImport = import.meta.glob('./nodes/*.js', { eager: true });
+const modules = Object.values(globImport);
+const customNodes = Object.fromEntries(modules.map((node) => [node.name, node.toGovspeak]))
+
+const nodes = Object.assign(defaultNodes, customNodes);
+
+export const markdownSerializer = new MarkdownSerializer(nodes, {
   em: {open: "*", close: "*", mixable: true, expelEnclosingWhitespace: true},
   strong: {open: "**", close: "**", mixable: true, expelEnclosingWhitespace: true},
   link: {
