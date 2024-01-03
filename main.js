@@ -19,10 +19,10 @@ export default class GovspeakVisualEditor {
       dispatchTransaction(transaction) {
         let newState = view.state.apply(transaction)
         view.updateState(newState)
-        govspeak.textContent = markdownSerializer.serialize(window.view.state.doc)
+        govspeak.value = markdownSerializer.serialize(window.view.state.doc)
       }
     })
 
-    govspeak.textContent = markdownSerializer.serialize(window.view.state.doc)
+    govspeak.value = markdownSerializer.serialize(window.view.state.doc)
   }
 }
