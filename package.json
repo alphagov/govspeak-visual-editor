@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "type": "module",
   "files": ["dist"],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/govspeak-visual-editor.umd.cjs",
+  "module": "./dist/govspeak-visual-editor.js",
   "exports": {
     ".": {
       "import": "./dist/govspeak-visual-editor.js",
