@@ -59,4 +59,14 @@
   <script type="module" src="./example.js"></script>
 </body>
 
+<script type="module">
+  import GovspeakVisualEditor from './lib/main.js'
+
+  new GovspeakVisualEditor(
+    document.querySelector("#content"),
+    document.querySelector("#editor"),
+    document.querySelector('#govspeak')
+  )
+</script>
+
 </html>

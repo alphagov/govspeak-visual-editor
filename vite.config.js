@@ -1,6 +1,16 @@
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default {
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'lib/main.js'),
+      name: 'Govspeak Visual Editor',
+      fileName: 'govspeak-visual-editor',
+    }
+  },
   css: {
     preprocessorOptions: {
       scss: {

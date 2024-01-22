@@ -1,8 +1,16 @@
 {
-  "name": "prosemirror",
-  "private": true,
+  "name": "govspeak-visual-editor",
   "version": "0.0.0",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/govspeak-visual-editor.js",
+      "require": "./dist/govspeak-visual-editor.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
