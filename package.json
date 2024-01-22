@@ -22,7 +22,7 @@
     "vite-plugin-static-copy": "^0.17.0"
   },
   "dependencies": {
-    "govuk_publishing_components": "^37.2.3",
+    "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
     "govuk-frontend": "^4.7.0",
     "prosemirror-example-setup": "^1.2.2",
     "prosemirror-keymap": "^1.2.2",
