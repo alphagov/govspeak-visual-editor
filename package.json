@@ -17,12 +17,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
     "sass": "^1.69.3",
     "vite": "^4.5.2",
     "vite-plugin-static-copy": "^0.17.0"
   },
   "dependencies": {
-    "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
     "govuk-frontend": "^4.7.0",
     "prosemirror-example-setup": "^1.2.2",
     "prosemirror-keymap": "^1.2.2",
