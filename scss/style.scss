@@ -1,13 +1,3 @@
-// SCSS function for image URLs
-// used by govuk_publishing_components
-@function image-url($filename){
-@return url('/assets/#{$filename}');
-}
-
-@import "govuk/base";
-@import "govuk/core/all";
-@import "govuk_publishing_components/components/govspeak";
-
 @import "prosemirror-view/style/prosemirror.css";
 @import "prosemirror-menu/style/menu.css";
 @import "./prosemirror-example-setup";
@@ -35,12 +25,10 @@ body {
   flex: 1;
   border-radius: 4px;
   border: 2px solid rgba(0, 0, 0, 0.2);
-  padding: 5px 0 0;
 }
 
-#govspeak {
-  padding: 50px 15px 15px;
-  font-size: 16px;
+#editor {
+  padding: 5px 0 0;
 }
 
 .ProseMirror {
