@@ -15743,6 +15743,4 @@ class mj {
     }), r.value = hi.serialize(window.view.state.doc);
   }
 }
-export {
-  mj as default
-};
+window.GovspeakVisualEditor = mj;
