@@ -14992,9 +14992,9 @@ Gt = TH(Gt, "paragraph block*", "block");
 _o.forEach((n) => {
   Gt = Gt.addToEnd(n.name, n.schema);
 });
-const di = new Ni({
+const LH = So.spec.marks.remove("em"), di = new Ni({
   nodes: Gt,
-  marks: So.spec.marks
+  marks: LH
 });
 var Ve = {
   8: "Backspace",
@@ -15074,7 +15074,7 @@ var Ve = {
   220: "|",
   221: "}",
   222: '"'
-}, LH = typeof navigator < "u" && /Mac/.test(navigator.platform), BH = typeof navigator < "u" && /MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent);
+}, BH = typeof navigator < "u" && /Mac/.test(navigator.platform), PH = typeof navigator < "u" && /MSIE \d|Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent);
 for (var $ = 0; $ < 10; $++)
   Ve[48 + $] = Ve[96 + $] = String($);
 for (var $ = 1; $ <= 24; $++)
@@ -15083,12 +15083,12 @@ for (var $ = 65; $ <= 90; $++)
   Ve[$] = String.fromCharCode($ + 32), Mn[$] = String.fromCharCode($);
 for (var Sr in Ve)
   Mn.hasOwnProperty(Sr) || (Mn[Sr] = Ve[Sr]);
-function PH(n) {
-  var e = LH && n.metaKey && n.shiftKey && !n.ctrlKey && !n.altKey || BH && n.shiftKey && n.key && n.key.length == 1 || n.key == "Unidentified", t = !e && n.key || (n.shiftKey ? Mn : Ve)[n.keyCode] || n.key || "Unidentified";
+function VH(n) {
+  var e = BH && n.metaKey && n.shiftKey && !n.ctrlKey && !n.altKey || PH && n.shiftKey && n.key && n.key.length == 1 || n.key == "Unidentified", t = !e && n.key || (n.shiftKey ? Mn : Ve)[n.keyCode] || n.key || "Unidentified";
   return t == "Esc" && (t = "Escape"), t == "Del" && (t = "Delete"), t == "Left" && (t = "ArrowLeft"), t == "Up" && (t = "ArrowUp"), t == "Right" && (t = "ArrowRight"), t == "Down" && (t = "ArrowDown"), t;
 }
-const VH = typeof navigator < "u" ? /Mac|iP(hone|[oa]d)/.test(navigator.platform) : !1;
-function $H(n) {
+const $H = typeof navigator < "u" ? /Mac|iP(hone|[oa]d)/.test(navigator.platform) : !1;
+function UH(n) {
   let e = n.split(/-(?!$)/), t = e[e.length - 1];
   t == "Space" && (t = " ");
   let r, o, s, i;
@@ -15103,16 +15103,16 @@ function $H(n) {
     else if (/^s(hift)?$/i.test(c))
       s = !0;
     else if (/^mod$/i.test(c))
-      VH ? i = !0 : o = !0;
+      $H ? i = !0 : o = !0;
     else
       throw new Error("Unrecognized modifier name: " + c);
   }
   return r && (t = "Alt-" + t), o && (t = "Ctrl-" + t), i && (t = "Meta-" + t), s && (t = "Shift-" + t), t;
 }
-function UH(n) {
+function HH(n) {
   let e = /* @__PURE__ */ Object.create(null);
   for (let t in n)
-    e[$H(t)] = n[t];
+    e[UH(t)] = n[t];
   return e;
 }
 function _r(n, e, t = !0) {
@@ -15122,9 +15122,9 @@ function mi(n) {
   return new $e({ props: { handleKeyDown: ac(n) } });
 }
 function ac(n) {
-  let e = UH(n);
+  let e = HH(n);
   return function(t, r) {
-    let o = PH(r), s, i = e[_r(o, r)];
+    let o = VH(r), s, i = e[_r(o, r)];
     if (i && i(t.state, t.dispatch, t))
       return !0;
     if (o.length == 1 && o != " ") {
@@ -15142,14 +15142,14 @@ function ac(n) {
     return !1;
   };
 }
-function HH(n = {}) {
+function jH(n = {}) {
   return new $e({
     view(e) {
-      return new jH(e, n);
+      return new WH(e, n);
     }
   });
 }
-class jH {
+class WH {
   constructor(e, t) {
     var r;
     this.editorView = e, this.cursorPos = null, this.element = null, this.timeout = -1, this.width = (r = t.width) !== null && r !== void 0 ? r : 1, this.color = t.color === !1 ? void 0 : t.color || "black", this.class = t.class, this.handlers = ["dragover", "dragend", "drop", "dragleave"].map((o) => {
@@ -15260,7 +15260,7 @@ class z extends T {
   */
   static valid(e) {
     let t = e.parent;
-    if (t.isTextblock || !WH(e) || !JH(e))
+    if (t.isTextblock || !JH(e) || !GH(e))
       return !1;
     let r = t.type.spec.allowGapCursor;
     if (r != null)
@@ -15322,7 +15322,7 @@ class Do {
     return z.valid(t) ? new z(t) : T.near(t);
   }
 }
-function WH(n) {
+function JH(n) {
   for (let e = n.depth; e >= 0; e--) {
     let t = n.index(e), r = n.node(e);
     if (t == 0) {
@@ -15339,7 +15339,7 @@ function WH(n) {
   }
   return !0;
 }
-function JH(n) {
+function GH(n) {
   for (let e = n.depth; e >= 0; e--) {
     let t = n.indexAfter(e), r = n.node(e);
     if (t == r.childCount) {
@@ -15356,20 +15356,20 @@ function JH(n) {
   }
   return !0;
 }
-function GH() {
+function KH() {
   return new $e({
     props: {
-      decorations: QH,
+      decorations: XH,
       createSelectionBetween(n, e, t) {
         return e.pos == t.pos && z.valid(t) ? new z(t) : null;
       },
-      handleClick: ZH,
-      handleKeyDown: KH,
-      handleDOMEvents: { beforeinput: YH }
+      handleClick: YH,
+      handleKeyDown: ZH,
+      handleDOMEvents: { beforeinput: QH }
     }
   });
 }
-const KH = ac({
+const ZH = ac({
   ArrowLeft: an("horiz", -1),
   ArrowRight: an("horiz", 1),
   ArrowUp: an("vert", -1),
@@ -15388,7 +15388,7 @@ function an(n, e) {
     return a ? (o && o(r.tr.setSelection(new z(a))), !0) : !1;
   };
 }
-function ZH(n, e, t) {
+function YH(n, e, t) {
   if (!n || !n.editable)
     return !1;
   let r = n.state.doc.resolve(e);
@@ -15397,7 +15397,7 @@ function ZH(n, e, t) {
   let o = n.posAtCoords({ left: t.clientX, top: t.clientY });
   return o && o.inside > -1 && _.isSelectable(n.state.doc.nodeAt(o.inside)) ? !1 : (n.dispatch(n.state.tr.setSelection(new z(r))), !0);
 }
-function YH(n, e) {
+function QH(n, e) {
   if (e.inputType != "insertCompositionText" || !(n.state.selection instanceof z))
     return !1;
   let { $from: t } = n.state.selection, r = t.parent.contentMatchAt(t.index()).findWrapping(n.state.schema.nodes.text);
@@ -15409,7 +15409,7 @@ function YH(n, e) {
   let s = n.state.tr.replace(t.pos, t.pos, new C(o, 0, 0));
   return s.setSelection(I.near(s.doc.resolve(t.pos + 1))), n.dispatch(s), !1;
 }
-function QH(n) {
+function XH(n) {
   if (!(n.selection instanceof z))
     return null;
   let e = document.createElement("div");
@@ -15441,7 +15441,7 @@ function uc(n) {
   let a = e.getBoundingClientRect();
   e.style.top = (window.innerHeight - a.height) / 2 + "px", e.style.left = (window.innerWidth - a.width) / 2 + "px";
   let u = () => {
-    let h = XH(n.fields, o);
+    let h = ej(n.fields, o);
     h && (r(), n.callback(h));
   };
   l.addEventListener("submit", (h) => {
@@ -15454,21 +15454,21 @@ function uc(n) {
   let f = l.elements[0];
   f && f.focus();
 }
-function XH(n, e) {
+function ej(n, e) {
   let t = /* @__PURE__ */ Object.create(null), r = 0;
   for (let o in n) {
     let s = n[o], i = e[r++], l = s.read(i), c = s.validate(l);
     if (c)
-      return ej(i, c), null;
+      return tj(i, c), null;
     t[o] = s.clean(l);
   }
   return t;
 }
-function ej(n, e) {
+function tj(n, e) {
   let t = n.parentNode, r = t.appendChild(document.createElement("div"));
   r.style.left = n.offsetLeft + n.offsetWidth + 2 + "px", r.style.top = n.offsetTop - 5 + "px", r.className = "ProseMirror-invalid", r.textContent = e, setTimeout(() => t.removeChild(r), 1500);
 }
-class tj {
+class nj {
   /**
   Create a field with the given options. Options support by all
   field types are:
@@ -15498,7 +15498,7 @@ class tj {
     return this.options.clean ? this.options.clean(e) : e;
   }
 }
-class Bt extends tj {
+class Bt extends nj {
   render() {
     let e = document.createElement("input");
     return e.type = "text", e.placeholder = this.options.label, e.value = this.options.value || "", e.autocomplete = "off", e;
@@ -15513,7 +15513,7 @@ function fc(n, e) {
   }
   return !1;
 }
-function nj(n) {
+function rj(n) {
   return new pe({
     title: "Insert image",
     label: "Image",
@@ -15562,7 +15562,7 @@ function Dr(n, e) {
     t[r] = e[r];
   return hc(qe(n), t);
 }
-function rj(n) {
+function oj(n) {
   return new pe({
     title: "Add or remove link",
     icon: ie.link,
@@ -15596,9 +15596,9 @@ function gi(n, e) {
 }
 function pc(n) {
   let e = {}, t;
-  (t = n.marks.strong) && (e.toggleStrong = Dr(t, { title: "Toggle strong style", icon: ie.strong })), (t = n.marks.em) && (e.toggleEm = Dr(t, { title: "Toggle emphasis", icon: ie.em })), (t = n.marks.code) && (e.toggleCode = Dr(t, { title: "Toggle code font", icon: ie.code })), (t = n.marks.link) && (e.toggleLink = rj(t));
+  (t = n.marks.strong) && (e.toggleStrong = Dr(t, { title: "Toggle strong style", icon: ie.strong })), (t = n.marks.em) && (e.toggleEm = Dr(t, { title: "Toggle emphasis", icon: ie.em })), (t = n.marks.code) && (e.toggleCode = Dr(t, { title: "Toggle code font", icon: ie.code })), (t = n.marks.link) && (e.toggleLink = oj(t));
   let r;
-  if ((r = n.nodes.image) && (e.insertImage = nj(r)), (r = n.nodes.bullet_list) && (e.wrapBulletList = gi(r, {
+  if ((r = n.nodes.image) && (e.insertImage = rj(r)), (r = n.nodes.bullet_list) && (e.wrapBulletList = gi(r, {
     title: "Wrap in bullet list",
     icon: ie.bulletList
   })), (r = n.nodes.ordered_list) && (e.wrapOrderedList = gi(r, {
@@ -15651,7 +15651,7 @@ function pc(n) {
   ])], e.fullMenu = e.inlineMenu.concat([[e.insertMenu, e.typeMenu]], [[wf, Cf]], e.blockMenu), e;
 }
 const bi = typeof navigator < "u" ? /Mac|iP(hone|[oa]d)/.test(navigator.platform) : !1;
-function oj(n, e) {
+function sj(n, e) {
   let t = {}, r;
   function o(s, i) {
     if (e) {
@@ -15675,32 +15675,32 @@ function oj(n, e) {
   }
   return t;
 }
-function sj(n) {
+function ij(n) {
   return st(/^\s*>\s$/, n);
 }
-function ij(n) {
+function lj(n) {
   return st(/^(\d+)\.\s$/, n, (e) => ({ order: +e[1] }), (e, t) => t.childCount + t.attrs.order == +e[1]);
 }
-function lj(n) {
+function cj(n) {
   return st(/^\s*([-+*])\s$/, n);
 }
-function cj(n) {
+function aj(n) {
   return Fn(/^```$/, n);
 }
-function aj(n, e) {
+function uj(n, e) {
   return Fn(new RegExp("^(#{1," + e + "})\\s$"), n, (t) => ({ level: t[1].length }));
 }
-function uj(n) {
-  let e = Lf.concat(qf, Nf), t;
-  return (t = n.nodes.blockquote) && e.push(sj(t)), (t = n.nodes.ordered_list) && e.push(ij(t)), (t = n.nodes.bullet_list) && e.push(lj(t)), (t = n.nodes.code_block) && e.push(cj(t)), (t = n.nodes.heading) && e.push(aj(t, 6)), Ul({ rules: e });
-}
 function fj(n) {
+  let e = Lf.concat(qf, Nf), t;
+  return (t = n.nodes.blockquote) && e.push(ij(t)), (t = n.nodes.ordered_list) && e.push(lj(t)), (t = n.nodes.bullet_list) && e.push(cj(t)), (t = n.nodes.code_block) && e.push(aj(t)), (t = n.nodes.heading) && e.push(uj(t, 6)), Ul({ rules: e });
+}
+function hj(n) {
   let e = [
-    uj(n.schema),
-    mi(oj(n.schema, n.mapKeys)),
+    fj(n.schema),
+    mi(sj(n.schema, n.mapKeys)),
     mi(tf),
-    HH(),
-    GH()
+    jH(),
+    KH()
   ];
   return n.menuBar !== !1 && e.push(Sf({
     floating: n.floatingMenu !== !1,
@@ -15711,28 +15711,28 @@ function fj(n) {
     }
   }));
 }
-const hj = (n) => {
+const pj = (n) => {
   const e = pc(n);
   return _o.forEach((t) => {
     t.buildMenu({ menu: e, schema: n });
   }), e.fullMenu;
-}, pj = (n) => {
+}, dj = (n) => {
   const e = _o.flatMap((t) => t.inputRules(n));
   return Ul({ rules: e });
-}, dj = (n) => {
-  n.menuContent = hj(n.schema);
-  const e = fj(n);
+}, mj = (n) => {
+  n.menuContent = pj(n.schema);
+  const e = hj(n);
   return e.pop(), e.push(new $e({
     props: {
       attributes: { class: "govspeak" }
     }
-  })), e.push(pj(n.schema)), e;
+  })), e.push(dj(n.schema)), e;
 };
-class mj {
+class gj {
   constructor(e, t, r) {
     let o = ft.create({
       doc: gt.fromSchema(di).parse(e),
-      plugins: dj({ schema: di })
+      plugins: mj({ schema: di })
     });
     window.view = new Ru(t, {
       state: o,
@@ -15743,4 +15743,4 @@ class mj {
     }), r.value = hi.serialize(window.view.state.doc);
   }
 }
-window.GovspeakVisualEditor = mj;
+window.GovspeakVisualEditor = gj;
