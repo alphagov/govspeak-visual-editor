@@ -1,6 +1,4 @@
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
-
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default {
@@ -22,6 +20,10 @@ export default {
       }
     }
   },
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
   plugins: [
     viteStaticCopy({
       targets: [
@@ -36,4 +38,5 @@ export default {
       ]
     })
   ],
+  setupFilesAfterEnv: ['jest-prosemirror/environment'],
 }
