@@ -4,33 +4,113 @@
 @import "prosemirror-gapcursor/style/gapcursor.css";
 
 :root {
-  font-family: system-ui, sans-serif;
-}
-
-body {
-  margin: 0;
-}
-
-#container {
-  width:100vw;
-  box-sizing: border-box;
-  padding: 20px;
-
-  display: flex;
-  gap: 20px;
-}
-
-#editor,
-#govspeak {
-  flex: 1;
-  border-radius: 4px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-}
-
-#editor {
-  padding: 5px 0 0;
+  font-family: "GDS Transport",arial,sans-serif;
 }
 
 .ProseMirror {
   padding: 15px;
+  border: 2px solid black;
+}
+
+.ProseMirror:focus,
+.ProseMirror-prompt input[type=text]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px;
+}
+
+.ProseMirror-menu-dropdown,
+.ProseMirror-menu-dropdown-menu,
+.ProseMirror-menu-submenu,
+.ProseMirror-prompt {
+  color: black;
+  font-size: 16px;
+}
+
+.ProseMirror-menubar {
+  background: none;
+  border: none;
+
+  padding: 6px;
+
+  display: flex;
+  align-items: center;
+}
+
+.ProseMirror-icon {
+  color: black;
+}
+
+.ProseMirror-icon svg {
+  height: 32px;
+}
+
+.ProseMirror-menuseparator {
+  margin: 5px;
+  height: 20px;
+}
+
+.ProseMirror-menu-dropdown {
+  padding-right: 20px;
+  padding-left: 5px;
+}
+
+.ProseMirror-menu-dropdown:after {
+  opacity: 1;
+}
+
+.ProseMirror-menu-dropdown-menu {
+  padding: 0;
+  margin-left: -5px;
+  margin-top: 10px;
+}
+
+.ProseMirror-menu-dropdown-item {
+  padding: 10px;
+}
+
+.ProseMirror-menu-submenu {
+  padding: 0;
+  margin-top: -8px;
+}
+
+.ProseMirror-prompt {
+  border: 2px solid black;
+  border-radius: 0;
+  padding: 0;
+  margin: -8px 0 0 -8px;
+}
+
+.ProseMirror-prompt:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  background: #0b0c0c;
+  opacity: .8;
+}
+
+.ProseMirror-prompt form {
+  padding: 16px;
+  background: white;
+}
+
+.ProseMirror-prompt h5 {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.ProseMirror-prompt input[type=text] {
+  border: 2px solid black;
+  background: none;
+  font-size: 19px;
+  padding: 5px;
+  margin: 5px 0;
 }
