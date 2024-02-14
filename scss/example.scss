@@ -8,6 +8,24 @@
 @import "govuk/core/all";
 @import "govuk_publishing_components/components/govspeak";
 
+body {
+  margin: 0;
+}
+
+#container {
+  width:100vw;
+  box-sizing: border-box;
+  padding: 20px;
+
+  display: flex;
+  gap: 20px;
+}
+
+#editor,
+#govspeak {
+  flex: 1;
+}
+
 #govspeak {
   padding: 50px 15px 15px;
   font-size: 16px;
