@@ -28,10 +28,10 @@
 }
 
 .ProseMirror-menubar {
-  background: none;
   border: none;
 
-  padding: 6px;
+  padding: 6px 6px 3px 6px;
+  margin: 0 -3px 3px -3px;
 
   display: flex;
   align-items: center;
