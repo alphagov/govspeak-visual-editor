@@ -15713,7 +15713,7 @@ function hj(n) {
 }
 const pj = (n) => {
   const e = pc(n);
-  return _o.forEach((t) => {
+  return e.typeMenu.content[2].content.shift(), _o.forEach((t) => {
     t.buildMenu({ menu: e, schema: n });
   }), e.fullMenu;
 }, dj = (n) => {
