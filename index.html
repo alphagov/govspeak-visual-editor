@@ -1,72 +1,78 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProseMirror demo</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProseMirror demo</title>
-</head>
+  <body>
+    <div id="content" hidden>
+      <p>Hello world, this is the ProseMirror editor.</p>
+      <ol>
+        <li><p>First</p></li>
+        <li><p>Second</p></li>
+        <li><p>Third</p></li>
+      </ol>
+      <div class="call-to-action">
+        <p>Call to action</p>
+      </div>
+      <div
+        role="note"
+        aria-label="Warning"
+        class="application-notice help-notice"
+      >
+        <p>This is a warning callout</p>
+      </div>
+      <div
+        role="note"
+        aria-label="Information"
+        class="application-notice info-notice"
+      >
+        <p>This is an information callout</p>
+      </div>
+      <div class="example">
+        <p>
+          This is an example callout
+          <br /><br />
+          That works on multiple lines
+        </p>
+      </div>
+      <div role="address" aria-label="Address" class="address">
+        <p>
+          HM Revenue and Customs
+          <br />
+          Bradford
+          <br />
+          BD98 1YY
+        </p>
+      </div>
+      <div role="contact" aria-label="Contact" class="contact">
+        <p>
+          This is a contact
+          <br />
+          Financial Conduct Authority
+          <br />
+          Telephone: 0800 111 6768
+          <br />
+          Monday to Friday, 8am to 6pm
+        </p>
+      </div>
+    </div>
+    <div id="container">
+      <div id="editor"></div>
+      <textarea id="govspeak"></textarea>
+    </div>
+    <script type="module" src="./lib/main.js"></script>
+  </body>
 
-<body>
-  <div id="content" hidden>
-    <p>Hello world, this is the ProseMirror editor.</p>
-    <ol>
-      <li><p>First</p></li>
-      <li><p>Second</p></li>
-      <li><p>Third</p></li>
-    </ol>
-    <div class="call-to-action">
-      <p>Call to action</p>
-    </div>
-    <div role="note" aria-label="Warning" class="application-notice help-notice">
-      <p>This is a warning callout</p>
-    </div>
-    <div role="note" aria-label="Information" class="application-notice info-notice">
-      <p>This is an information callout</p>
-    </div>
-    <div class="example">
-      <p>
-        This is an example callout
-        <br><br>
-        That works on multiple lines
-      </p>
-    </div>
-    <div role="address" aria-label="Address" class="address">
-      <p>
-        HM Revenue and Customs
-        <br>
-        Bradford
-        <br>
-        BD98 1YY
-      </p>
-    </div>
-    <div role="contact" aria-label="Contact" class="contact">
-      <p>
-        This is a contact
-        <br>
-        Financial Conduct Authority
-        <br>
-        Telephone: 0800 111 6768
-        <br>
-        Monday to Friday, 8am to 6pm
-      </p>
-    </div>
-  </div>
-  <div id="container">
-    <div id="editor"></div>
-    <textarea id="govspeak"></textarea>
-  </div>
-  <script type="module" src="./lib/main.js"></script>
-</body>
+  <script type="module">
+    import "./scss/example.scss";
 
-<script type="module">
-  import './scss/example.scss'
-
-  new GovspeakVisualEditor(
-    document.querySelector("#content"),
-    document.querySelector("#editor"),
-    document.querySelector('#govspeak')
-  )
-</script>
-
+    new GovspeakVisualEditor(
+      document.querySelector("#content"),
+      document.querySelector("#editor"),
+      document.querySelector("#govspeak"),
+    );
+  </script>
 </html>

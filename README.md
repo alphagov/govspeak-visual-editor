@@ -30,6 +30,7 @@ Govspeak is a flavour of Markdown used for publishing content on [GOV.UK].
    ```
    npm run e2e-test
    ```
+
 ## Editor overview
 
 The editor implements a schema based on the [prosemirror-schema-basic] and [prosemirror-schema-list] modules, extended with some Govspeak-specific nodes (such as [callouts]).
