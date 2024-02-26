@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Custom nodes 1`] = `
+"$A
+
+address
+
+$A
+
+$CTA
+
+call to action
+
+$CTA
+
+$C
+
+contact
+
+$C
+
+$E
+
+example callout$E
+
+^information callout^
+
+%warning callout%"
+`;
