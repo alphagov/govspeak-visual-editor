@@ -17,9 +17,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "e2e-test": "playwright test",
+    "e2e-test-ui": "playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.20",
     "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
     "prosemirror-test-builder": "^1.1.1",
     "sass": "^1.69.3",
