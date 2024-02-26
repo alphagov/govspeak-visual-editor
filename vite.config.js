@@ -36,4 +36,11 @@ export default {
       ]
     })
   ],
+  test: {
+    exclude: [
+      '**/node_modules/**',
+      '**/.{idea,git,cache,output,temp}/**',
+      '**/e2e/**',
+    ],
+  },
 }
