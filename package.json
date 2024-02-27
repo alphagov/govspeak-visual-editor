@@ -21,7 +21,8 @@
     "e2e-test": "playwright test",
     "e2e-test-ui": "playwright test --ui",
     "lint": "eslint --ignore-path .gitignore \"**/*.js\"",
-    "prettier": "prettier . --check"
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",

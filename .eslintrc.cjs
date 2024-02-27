@@ -22,5 +22,5 @@ module.exports = {
   rules: {
     camelcase: "off",
   },
-  ignorePatterns: ["dist"]
+  ignorePatterns: ["dist"],
 };
