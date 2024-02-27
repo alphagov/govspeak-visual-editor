@@ -20,7 +20,7 @@
     "test": "vitest",
     "e2e-test": "playwright test",
     "e2e-test-ui": "playwright test --ui",
-    "lint": "eslint \"lib/**/*.js\" \"e2e/**/*.js\"",
+    "lint": "eslint --ignore-path .gitignore \"**/*.js\"",
     "prettier": "prettier . --check"
   },
   "devDependencies": {
