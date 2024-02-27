@@ -19,12 +19,22 @@
     "preview": "vite preview",
     "test": "vitest",
     "e2e-test": "playwright test",
-    "e2e-test-ui": "playwright test --ui"
+    "e2e-test-ui": "playwright test --ui",
+    "lint": "eslint --ignore-path .gitignore \"**/*.js\"",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",
     "@types/node": "^20.11.20",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
     "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
+    "prettier": "^3.2.5",
     "prosemirror-test-builder": "^1.1.1",
     "sass": "^1.69.3",
     "vite": "^4.5.2",

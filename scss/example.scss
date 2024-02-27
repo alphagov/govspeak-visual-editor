@@ -1,7 +1,7 @@
 // SCSS function for image URLs
 // used by govuk_publishing_components
-@function image-url($filename){
-@return url('/assets/#{$filename}');
+@function image-url($filename) {
+  @return url("/assets/#{$filename}");
 }
 
 @import "govuk/base";
@@ -13,7 +13,7 @@ body {
 }
 
 #container {
-  width:100vw;
+  width: 100vw;
   box-sizing: border-box;
   padding: 20px;
 

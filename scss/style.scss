@@ -4,7 +4,7 @@
 @import "prosemirror-gapcursor/style/gapcursor.css";
 
 :root {
-  font-family: "GDS Transport",arial,sans-serif;
+  font-family: "GDS Transport", arial, sans-serif;
 }
 
 .ProseMirror {
@@ -13,7 +13,7 @@
 }
 
 .ProseMirror:focus,
-.ProseMirror-prompt input[type=text]:focus {
+.ProseMirror-prompt input[type="text"]:focus {
   outline: 3px solid #fd0;
   outline-offset: 0;
   box-shadow: inset 0 0 0 2px;
@@ -92,7 +92,7 @@
   z-index: -1;
 
   background: #0b0c0c;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .ProseMirror-prompt form {
@@ -107,7 +107,7 @@
   margin-bottom: 10px;
 }
 
-.ProseMirror-prompt input[type=text] {
+.ProseMirror-prompt input[type="text"] {
   border: 2px solid black;
   background: none;
   font-size: 19px;
