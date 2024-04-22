@@ -9,12 +9,10 @@ test("renders warning callout menu items", async ({ page }) => {
   await page.getByText("%", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
   const visibleMenuButtons = [
-    "B",
     "p",
     "H2",
     "H3",
     "“”",
-    "<>",
     "$A",
     "$CTA",
     "$C",

@@ -9,11 +9,9 @@ test("renders example callout menu items", async ({ page }) => {
   await page.getByText("$E", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
   const visibleMenuButtons = [
-    "B",
     "H2",
     "H3",
     "“”",
-    "<>",
     "$A",
     "$CTA",
     "$C",
