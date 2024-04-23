@@ -9,11 +9,9 @@ test("renders contacts menu items", async ({ page }) => {
   await page.getByText("$C", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
   const visibleMenuButtons = [
-    "B",
     "H2",
     "H3",
     "“”",
-    "<>",
     "$A",
     "$CTA",
     "$C",

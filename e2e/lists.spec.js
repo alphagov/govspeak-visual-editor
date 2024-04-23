@@ -9,13 +9,12 @@ test.describe("bulleted list", () => {
   test("renders bullet list menu items", async ({ page }) => {
     await page.getByText("1.", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = ["B"];
+    const visibleMenuButtons = [];
     const disabledMenuButtons = [
       "H2",
       "p",
       "H3",
       "“”",
-      "<>",
       "1.",
       "-",
       "$A",
@@ -82,13 +81,12 @@ test.describe("numbered list", () => {
   test("renders numbered list menu items", async ({ page }) => {
     await page.getByText("-", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = ["B"];
+    const visibleMenuButtons = [];
     const disabledMenuButtons = [
       "H2",
       "p",
       "H3",
       "“”",
-      "<>",
       "1.",
       "-",
       "$A",

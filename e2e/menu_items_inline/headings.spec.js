@@ -10,11 +10,9 @@ test.describe("H2", () => {
     await page.getByText("H2", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
     const visibleMenuButtons = [
-      "B",
       "p",
       "H3",
       "“”",
-      "<>",
       "$A",
       "$CTA",
       "$C",
@@ -87,11 +85,9 @@ test.describe("H3", () => {
     await page.getByText("H3", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
     const visibleMenuButtons = [
-      "B",
       "p",
       "H2",
       "“”",
-      "<>",
       "$A",
       "$CTA",
       "$C",
