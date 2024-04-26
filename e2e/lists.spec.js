@@ -152,3 +152,77 @@ test.describe("numbered list", () => {
     ).toBeVisible();
   });
 });
+
+test.describe("steps", () => {
+  test("renders steps menu items", async ({ page }) => {
+    await page.getByText("s1.", { exact: true }).click();
+    await expect(page.locator(".menubar")).toBeVisible();
+    const visibleMenuButtons = [];
+    const disabledMenuButtons = [
+      "H2",
+      "p",
+      "H3",
+      "“”",
+      "1.",
+      "-",
+      "$A",
+      "$CTA",
+      "$C",
+      "$E",
+      "^",
+      "%",
+    ];
+
+    for (const button of visibleMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of disabledMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeDisabled();
+  });
+
+  test("loads steps from the index file in the editor", async ({ page }) => {
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step 1"),
+    ).toBeVisible();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step 2"),
+    ).toBeVisible();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step 3"),
+    ).toBeVisible();
+  });
+
+  test("should render steps in the editor clearing on double enter when clicking on 's1.' and typing", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").focus();
+    await page.keyboard.type("New line\n");
+
+    await page.getByText("New line").click();
+    await page.getByText("s1.", { exact: true }).click();
+    await page.getByText("New line").selectText();
+    await page.keyboard.type("test 1\ntest 2\n\nnot steps\n");
+
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step 1"),
+    ).toBeVisible();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step 2"),
+    ).toBeVisible();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Not steps"),
+    ).not.toBeVisible();
+  });
+
+  test("should toggle steps item for existing paragraph line", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").focus();
+    await page.keyboard.type("Testing steps\n");
+
+    await page.locator("#editor p").getByText("Testing steps").click();
+    await page.getByText("s1.", { exact: true }).click();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Testing steps"),
+    ).toBeVisible();
+  });
+});
