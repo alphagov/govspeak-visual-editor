@@ -88,3 +88,15 @@ test("should allow embedding of other content", async ({ page }) => {
       .getByText("Testing example callout"),
   ).toBeVisible();
 });
+
+test("should not allow headings as a child node", async ({ page }) => {
+  await page.getByText("$E", { exact: true }).click();
+  await page.locator("#editor .ProseMirror.govspeak").focus();
+  await page.keyboard.type("Testing example callout\n\n");
+
+  await page
+    .locator("#editor .example")
+    .getByText("Testing example callout")
+    .click();
+  await expect(page.getByText("H3", { exact: true })).toBeDisabled();
+});
