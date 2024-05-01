@@ -5,9 +5,11 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
-test("should render default menu items", async ({ page }) => {
+test("should render default menu items with expected disabled states", async ({
+  page,
+}) => {
   await expect(page.locator(".menubar")).toBeVisible();
-  const visibleMenuButtons = [
+  const enabledMenuButtons = [
     "H2",
     "H3",
     "“”",
@@ -22,8 +24,8 @@ test("should render default menu items", async ({ page }) => {
   ];
   const disabledMenuButtons = ["p"];
 
-  for (const button of visibleMenuButtons)
-    await expect(page.getByText(button, { exact: true })).toBeVisible();
+  for (const button of enabledMenuButtons)
+    await expect(page.getByText(button, { exact: true })).toBeEnabled();
   for (const button of disabledMenuButtons)
     await expect(page.getByText(button, { exact: true })).toBeDisabled();
 });

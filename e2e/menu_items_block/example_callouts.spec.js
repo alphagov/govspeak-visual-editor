@@ -5,12 +5,12 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
-test("renders example callout menu items", async ({ page }) => {
+test("renders example callout menu items with expected disabled state", async ({
+  page,
+}) => {
   await page.getByText("$E", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
-  const visibleMenuButtons = [
-    "H2",
-    "H3",
+  const enabledMenuButtons = [
     "“”",
     "$A",
     "$CTA",
@@ -21,10 +21,10 @@ test("renders example callout menu items", async ({ page }) => {
     "1.",
     "-",
   ];
-  const disabledMenuButtons = ["p"];
+  const disabledMenuButtons = ["p", "H2", "H3"];
 
-  for (const button of visibleMenuButtons)
-    await expect(page.getByText(button, { exact: true })).toBeVisible();
+  for (const button of enabledMenuButtons)
+    await expect(page.getByText(button, { exact: true })).toBeEnabled();
   for (const button of disabledMenuButtons)
     await expect(page.getByText(button, { exact: true })).toBeDisabled();
 });
@@ -87,16 +87,4 @@ test("should allow embedding of other content", async ({ page }) => {
       .locator("#editor .example .example")
       .getByText("Testing example callout"),
   ).toBeVisible();
-});
-
-test("should not allow headings as a child node", async ({ page }) => {
-  await page.getByText("$E", { exact: true }).click();
-  await page.locator("#editor .ProseMirror.govspeak").focus();
-  await page.keyboard.type("Testing example callout\n\n");
-
-  await page
-    .locator("#editor .example")
-    .getByText("Testing example callout")
-    .click();
-  await expect(page.getByText("H3", { exact: true })).toBeDisabled();
 });

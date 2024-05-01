@@ -5,12 +5,12 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
-test("renders contacts menu items", async ({ page }) => {
+test("renders contacts menu items with expected disabled states", async ({
+  page,
+}) => {
   await page.getByText("$C", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
-  const visibleMenuButtons = [
-    "H2",
-    "H3",
+  const enabledMenuButtons = [
     "“”",
     "$A",
     "$CTA",
@@ -21,10 +21,10 @@ test("renders contacts menu items", async ({ page }) => {
     "1.",
     "-",
   ];
-  const disabledMenuButtons = ["p"];
+  const disabledMenuButtons = ["p", "H2", "H3"];
 
-  for (const button of visibleMenuButtons)
-    await expect(page.getByText(button, { exact: true })).toBeVisible();
+  for (const button of enabledMenuButtons)
+    await expect(page.getByText(button, { exact: true })).toBeEnabled();
   for (const button of disabledMenuButtons)
     await expect(page.getByText(button, { exact: true })).toBeDisabled();
 });
