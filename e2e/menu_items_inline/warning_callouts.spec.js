@@ -5,24 +5,16 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
-test("renders warning callout menu items", async ({ page }) => {
+test("renders warning callout menu items with expected disabled states", async ({
+  page,
+}) => {
   await page.getByText("%", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
-  const visibleMenuButtons = [
-    "p",
-    "H2",
-    "H3",
-    "“”",
-    "$A",
-    "$CTA",
-    "$C",
-    "$E",
-    "^",
-  ];
-  const disabledMenuButtons = ["%", "1.", "-"];
+  const enabledMenuButtons = ["p", "H2", "H3", "$A", "$CTA", "$C", "$E", "^"];
+  const disabledMenuButtons = ["“”", "%", "1.", "-"];
 
-  for (const button of visibleMenuButtons)
-    await expect(page.getByText(button, { exact: true })).toBeVisible();
+  for (const button of enabledMenuButtons)
+    await expect(page.getByText(button, { exact: true })).toBeEnabled();
   for (const button of disabledMenuButtons)
     await expect(page.getByText(button, { exact: true })).toBeDisabled();
 });

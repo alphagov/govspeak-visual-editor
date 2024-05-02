@@ -9,21 +9,20 @@ test.describe("H2", () => {
   test("renders H2 menu items", async ({ page }) => {
     await page.getByText("H2", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = [
-      "p",
-      "H3",
+    const enabledMenuButtons = ["p", "H3", "^", "%"];
+    const disabledMenuButtons = [
+      "H2",
+      "1.",
+      "-",
       "“”",
       "$A",
       "$CTA",
       "$C",
       "$E",
-      "^",
-      "%",
     ];
-    const disabledMenuButtons = ["H2", "1.", "-"];
 
-    for (const button of visibleMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of enabledMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeDisabled();
   });
@@ -81,21 +80,22 @@ test.describe("H2", () => {
 });
 
 test.describe("H3", () => {
-  test("renders H3 menu items", async ({ page }) => {
+  test("renders H3 menu items with expected disabled state", async ({
+    page,
+  }) => {
     await page.getByText("H3", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = [
-      "p",
-      "H2",
+    const visibleMenuButtons = ["p", "H2", "^", "%"];
+    const disabledMenuButtons = [
+      "H3",
+      "1.",
+      "-",
       "“”",
       "$A",
       "$CTA",
       "$C",
       "$E",
-      "^",
-      "%",
     ];
-    const disabledMenuButtons = ["H3", "1.", "-"];
 
     for (const button of visibleMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeVisible();

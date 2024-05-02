@@ -5,10 +5,12 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
-test("renders blockquote menu items", async ({ page }) => {
+test("renders blockquote menu items with expected disabled states", async ({
+  page,
+}) => {
   await page.getByText("“”", { exact: true }).click();
   await expect(page.locator(".menubar")).toBeVisible();
-  const visibleMenuButtons = [];
+  const enabledMenuButtons = [];
   const disabledMenuButtons = [
     "H2",
     "H3",
@@ -24,8 +26,8 @@ test("renders blockquote menu items", async ({ page }) => {
     "-",
   ];
 
-  for (const button of visibleMenuButtons)
-    await expect(page.getByText(button, { exact: true })).toBeVisible();
+  for (const button of enabledMenuButtons)
+    await expect(page.getByText(button, { exact: true })).toBeEnabled();
   for (const button of disabledMenuButtons)
     await expect(page.getByText(button, { exact: true })).toBeDisabled();
 });
