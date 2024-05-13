@@ -7,15 +7,15 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("H2", () => {
   test("renders H2 menu items", async ({ page }) => {
-    await page.getByText("H²", { exact: true }).click();
+    await page.getByTitle("Heading 2").click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const enabledMenuButtons = ["H²"];
-    const disabledMenuButtons = ["•", "⒈", "➊"];
+    const enabledMenuButtons = ["Heading 2"];
+    const disabledMenuButtons = ["Bullet list", "Ordered list", "Steps"];
 
     for (const button of enabledMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeEnabled();
+      await expect(page.getByTitle(button)).toBeEnabled();
     for (const button of disabledMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeDisabled();
+      await expect(page.getByTitle(button)).toBeDisabled();
   });
 
   test("loads H2 from the index file in the editor", async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe("H2", () => {
     await page.keyboard.type("New line\n");
 
     await page.getByText("New line").click();
-    await page.getByText("H²", { exact: true }).click();
+    await page.getByTitle("Heading 2").click();
     await page.getByText("New line").selectText();
     await page.keyboard.type("Testing H2!\nTesting not H2!\n");
     await expect(
@@ -49,7 +49,7 @@ test.describe("H2", () => {
     await page.keyboard.type("Testing paragraph\n");
 
     await page.locator("#editor p").getByText("Testing paragraph").click();
-    await page.getByText("H²", { exact: true }).click();
+    await page.getByTitle("Heading 2").click();
     await expect(
       page.locator("#editor h2").getByText("Testing paragraph"),
     ).toBeVisible();
@@ -58,12 +58,12 @@ test.describe("H2", () => {
   test("should toggle H2 headings off for existing heading", async ({
     page,
   }) => {
-    await page.getByText("H²", { exact: true }).click();
+    await page.getByTitle("Heading 2").click();
     await page.locator("#editor .ProseMirror.govspeak").focus();
     await page.keyboard.type("Testing heading\n");
 
     await page.locator("#editor h2").getByText("Testing heading").click();
-    await page.getByText("H²", { exact: true }).click();
+    await page.getByTitle("Heading 2").click();
     await expect(
       page.locator("#editor p").getByText("Testing heading"),
     ).toBeVisible();
