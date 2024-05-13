@@ -11,6 +11,7 @@
 .ProseMirror {
   padding: 15px;
   border: 2px solid black;
+  min-height: 500px;
 }
 
 .ProseMirror:focus,
@@ -20,98 +21,17 @@
   box-shadow: inset 0 0 0 2px;
 }
 
-.ProseMirror-menu-dropdown,
-.ProseMirror-menu-dropdown-menu,
-.ProseMirror-menu-submenu,
-.ProseMirror-prompt {
-  color: black;
-  font-size: 16px;
+.menubar {
+  background: #f3f2f1;
+  margin-bottom: 0;
+  width: 100%;
 }
 
-.ProseMirror-menubar {
-  border: none;
-
-  padding: 6px 6px 3px 6px;
-  margin: 0 -3px 3px -3px;
-
-  display: flex;
-  align-items: center;
+.menubar .govuk-button {
+  margin-bottom: 2px;
+  margin-right: 0;
 }
 
-.ProseMirror-icon {
-  color: black;
-}
-
-.ProseMirror-icon svg {
-  height: 32px;
-}
-
-.ProseMirror-menuseparator {
-  margin: 5px;
-  height: 20px;
-}
-
-.ProseMirror-menu-dropdown {
-  padding-right: 20px;
-  padding-left: 5px;
-}
-
-.ProseMirror-menu-dropdown:after {
-  opacity: 1;
-}
-
-.ProseMirror-menu-dropdown-menu {
-  padding: 0;
-  margin-left: -5px;
-  margin-top: 10px;
-}
-
-.ProseMirror-menu-dropdown-item {
-  padding: 10px;
-}
-
-.ProseMirror-menu-submenu {
-  padding: 0;
-  margin-top: -8px;
-}
-
-.ProseMirror-prompt {
-  border: 2px solid black;
-  border-radius: 0;
-  padding: 0;
-  margin: -8px 0 0 -8px;
-}
-
-.ProseMirror-prompt:before {
-  content: "";
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-
-  background: #0b0c0c;
-  opacity: 0.8;
-}
-
-.ProseMirror-prompt form {
-  padding: 16px;
-  background: white;
-}
-
-.ProseMirror-prompt h5 {
-  font-size: 20px;
-  font-weight: 700;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.ProseMirror-prompt input[type="text"] {
-  border: 2px solid black;
-  background: none;
-  font-size: 19px;
-  padding: 5px;
-  margin: 5px 0;
+.menubar .govuk-button--secondary:not(:hover) {
+  box-shadow: none;
 }

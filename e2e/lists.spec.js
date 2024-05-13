@@ -7,26 +7,13 @@ test.beforeEach(async ({ page }) => {
 
 test.describe("bulleted list", () => {
   test("renders bullet list menu items", async ({ page }) => {
-    await page.getByText("1.", { exact: true }).click();
+    await page.getByText("⒈", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = [];
-    const disabledMenuButtons = [
-      "H2",
-      "p",
-      "H3",
-      "“”",
-      "1.",
-      "-",
-      "$A",
-      "$CTA",
-      "$C",
-      "$E",
-      "^",
-      "%",
-    ];
+    const enabledMenuButtons = [];
+    const disabledMenuButtons = ["H²", "•", "⒈", "➊"];
 
-    for (const button of visibleMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of enabledMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeDisabled();
   });
@@ -48,7 +35,7 @@ test.describe("bulleted list", () => {
     await page.keyboard.type("New line\n");
 
     await page.getByText("New line").click();
-    await page.getByText("-", { exact: true }).click();
+    await page.getByText("•", { exact: true }).click();
     await page.getByText("New line").selectText();
     await page.keyboard.type("test 1\ntest 2\n\nnot list\n");
 
@@ -70,7 +57,7 @@ test.describe("bulleted list", () => {
     await page.keyboard.type("Testing paragraph\n");
 
     await page.locator("#editor p").getByText("Testing paragraph").click();
-    await page.getByText("-", { exact: true }).click();
+    await page.getByText("•", { exact: true }).click();
     await expect(
       page.locator("#editor ul li").getByText("Testing paragraph"),
     ).toBeVisible();
@@ -79,26 +66,13 @@ test.describe("bulleted list", () => {
 
 test.describe("numbered list", () => {
   test("renders numbered list menu items", async ({ page }) => {
-    await page.getByText("-", { exact: true }).click();
+    await page.getByText("•", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = [];
-    const disabledMenuButtons = [
-      "H2",
-      "p",
-      "H3",
-      "“”",
-      "1.",
-      "-",
-      "$A",
-      "$CTA",
-      "$C",
-      "$E",
-      "^",
-      "%",
-    ];
+    const enabledMenuButtons = [];
+    const disabledMenuButtons = ["H²", "•", "⒈", "➊"];
 
-    for (const button of visibleMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of enabledMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeDisabled();
   });
@@ -124,7 +98,7 @@ test.describe("numbered list", () => {
     await page.keyboard.type("New line\n");
 
     await page.getByText("New line").click();
-    await page.getByText("1.", { exact: true }).click();
+    await page.getByText("⒈", { exact: true }).click();
     await page.getByText("New line").selectText();
     await page.keyboard.type("test 1\ntest 2\n\nnot list\n");
 
@@ -146,7 +120,7 @@ test.describe("numbered list", () => {
     await page.keyboard.type("Testing paragraph\n");
 
     await page.locator("#editor p").getByText("Testing paragraph").click();
-    await page.getByText("1.", { exact: true }).click();
+    await page.getByText("⒈", { exact: true }).click();
     await expect(
       page.locator("#editor ol li").getByText("Testing paragraph"),
     ).toBeVisible();
@@ -155,26 +129,13 @@ test.describe("numbered list", () => {
 
 test.describe("steps", () => {
   test("renders steps menu items", async ({ page }) => {
-    await page.getByText("s1.", { exact: true }).click();
+    await page.getByText("➊", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = [];
-    const disabledMenuButtons = [
-      "H2",
-      "p",
-      "H3",
-      "“”",
-      "1.",
-      "-",
-      "$A",
-      "$CTA",
-      "$C",
-      "$E",
-      "^",
-      "%",
-    ];
+    const enabledMenuButtons = [];
+    const disabledMenuButtons = ["H²", "•", "⒈", "➊"];
 
-    for (const button of visibleMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of enabledMenuButtons)
+      await expect(page.getByText(button, { exact: true })).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeDisabled();
   });
@@ -198,7 +159,7 @@ test.describe("steps", () => {
     await page.keyboard.type("New line\n");
 
     await page.getByText("New line").click();
-    await page.getByText("s1.", { exact: true }).click();
+    await page.getByText("➊", { exact: true }).click();
     await page.getByText("New line").selectText();
     await page.keyboard.type("test 1\ntest 2\n\nnot steps\n");
 
@@ -220,7 +181,7 @@ test.describe("steps", () => {
     await page.keyboard.type("Testing steps\n");
 
     await page.locator("#editor p").getByText("Testing steps").click();
-    await page.getByText("s1.", { exact: true }).click();
+    await page.getByText("➊", { exact: true }).click();
     await expect(
       page.locator("#editor ol.steps li").getByText("Testing steps"),
     ).toBeVisible();
