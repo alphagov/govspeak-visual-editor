@@ -10,9 +10,8 @@ test.fixme(
   async ({ page }) => {
     await page.getByText("^", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const enabledMenuButtons = ["p", "H2", "H3", "$A", "$CTA", "$C", "$E", "%"];
-    const disabledMenuButtons = ["“”", "^", "1.", "-"];
-
+    const enabledMenuButtons = ["p", "H2", "H3", "$A", "$CTA", "$E", "%"];
+    const disabledMenuButtons = ["“”", "^", "1.", "-", "$C"];
     for (const button of enabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeEnabled();
     for (const button of disabledMenuButtons)
