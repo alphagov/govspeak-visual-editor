@@ -25,11 +25,19 @@
   background: #f3f2f1;
   margin-bottom: 0;
   width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
 }
 
 .menubar .govuk-button {
-  margin-bottom: 2px;
-  margin-right: 0;
+  height: 38px;
+  width: 40px;
+  margin: 0 5px 2px 0;
+  padding: 2px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menubar .govuk-button--secondary:not(:hover) {
