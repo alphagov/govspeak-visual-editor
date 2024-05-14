@@ -48,3 +48,8 @@
   min-width: 0;
   margin-right: 5px;
 }
+
+.test::before,
+.test::after {
+  content: "";
+}
