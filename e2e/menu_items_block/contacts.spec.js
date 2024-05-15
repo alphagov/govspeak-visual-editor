@@ -10,18 +10,21 @@ test.fixme(
   async ({ page }) => {
     await page.getByText("$C", { exact: true }).click();
     await expect(page.locator(".menubar")).toBeVisible();
-    const enabledMenuButtons = [
+    const enabledMenuButtons = [];
+    const disabledMenuButtons = [
+      "H2",
+      "p",
+      "H3",
       "“”",
+      "1.",
+      "-",
       "$A",
       "$CTA",
       "$C",
       "$E",
       "^",
       "%",
-      "1.",
-      "-",
     ];
-    const disabledMenuButtons = ["p", "H2", "H3"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByText(button, { exact: true })).toBeEnabled();
@@ -67,7 +70,6 @@ test.fixme(
   async ({ page }) => {
     await page.locator("#editor .ProseMirror.govspeak").focus();
     await page.keyboard.type("Testing paragraph\n");
-
     await page.locator("#editor p").getByText("Testing paragraph").click();
     await page.getByText("$C", { exact: true }).click();
     await expect(
@@ -75,15 +77,3 @@ test.fixme(
     ).toBeVisible();
   },
 );
-
-test.fixme("should allow embedding of other content", async ({ page }) => {
-  await page.getByText("$C", { exact: true }).click();
-  await page.locator("#editor .ProseMirror.govspeak").focus();
-  await page.keyboard.type("Testing contact\n\n");
-
-  await page.locator("#editor .contact").getByText("Testing contact").click();
-  await page.getByText("$C", { exact: true }).click();
-  await expect(
-    page.locator("#editor .contact .contact").getByText("Testing contact"),
-  ).toBeVisible();
-});
