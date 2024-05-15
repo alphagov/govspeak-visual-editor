@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("link menu item disabled by default", async ({ page }) => {
-  await expect(page.getByText("🔗", { exact: true })).toBeDisabled();
+  await expect(page.getByTitle("Link", { exact: true })).toBeDisabled();
 });
 
 test("link menu item enabled with selection", async ({ page }) => {
@@ -14,7 +14,7 @@ test("link menu item enabled with selection", async ({ page }) => {
     .locator("#editor")
     .getByText("Example link", { exact: true })
     .selectText();
-  await expect(page.getByText("🔗", { exact: true })).toBeEnabled();
+  await expect(page.getByTitle("Link", { exact: true })).toBeEnabled();
 });
 
 test("link menu item removes a selected link", async ({ page }) => {
@@ -22,7 +22,7 @@ test("link menu item removes a selected link", async ({ page }) => {
     .locator("#editor")
     .getByText("Example link", { exact: true })
     .selectText();
-  await page.getByText("🔗", { exact: true }).click();
+  await page.getByTitle("Link", { exact: true }).click();
   await expect(
     page.locator("#editor").getByText("Example link", { exact: true }),
   ).not.toHaveAttribute("href");
@@ -33,9 +33,9 @@ test("link menu item adds a link to selected text", async ({ page }) => {
     .locator("#editor")
     .getByText("Example link", { exact: true })
     .selectText();
-  await page.getByText("🔗", { exact: true }).click();
+  await page.getByTitle("Link", { exact: true }).click();
   page.on("dialog", (dialog) => dialog.accept("example.com"));
-  await page.getByText("🔗", { exact: true }).click();
+  await page.getByTitle("Link", { exact: true }).click();
   await expect(
     page.locator("#editor").getByText("Example link", { exact: true }),
   ).toHaveAttribute("href", "example.com");
