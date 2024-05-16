@@ -6,15 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Link", () => {
-  test("link menu item disabled by default", async ({ page }) => {
-    await expect(page.getByTitle("Link", { exact: true })).toBeDisabled();
-  });
-
-  test("link menu item enabled with selection", async ({ page }) => {
-    await page
-      .locator("#editor")
-      .getByText("Example link", { exact: true })
-      .selectText();
+  test("link menu item enabled by default", async ({ page }) => {
     await expect(page.getByTitle("Link", { exact: true })).toBeEnabled();
   });
 
@@ -41,19 +33,29 @@ test.describe("Link", () => {
       page.locator("#editor").getByText("Example link", { exact: true }),
     ).toHaveAttribute("href", "example.com");
   });
+
+  test("link menu item inserts a link when text is not selected", async ({
+    page,
+  }) => {
+    page.on("dialog", (dialog) => dialog.accept("example.com"));
+    await page.getByTitle("Link", { exact: true }).click();
+    await expect(
+      page.locator("#editor").getByText("example.com", { exact: true }),
+    ).toHaveAttribute("href", "example.com");
+  });
 });
 
 test.describe("Email link", () => {
-  test("email link menu item disabled by default", async ({ page }) => {
-    await expect(page.getByTitle("Link", { exact: true })).toBeDisabled();
+  test("email link menu item enabled by default", async ({ page }) => {
+    await expect(page.getByTitle("Email link", { exact: true })).toBeEnabled();
   });
 
-  test("email link menu item enabled with selection", async ({ page }) => {
+  test("email link menu item disabled with selection", async ({ page }) => {
     await page
       .locator("#editor")
       .getByText("Example link", { exact: true })
       .selectText();
-    await expect(page.getByTitle("Link", { exact: true })).toBeEnabled();
+    await expect(page.getByTitle("Email link", { exact: true })).toBeDisabled();
   });
 
   test("email link menu item prompts the user for an email that it links to", async ({
