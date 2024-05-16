@@ -27,3 +27,11 @@ example callout$E
 
 %warning callout%"
 `;
+
+exports[`Links and email links 1`] = `
+"[link](example.com)
+
+<contact@example.com>
+
+[link](mailto:contact@example.com)"
+`;
