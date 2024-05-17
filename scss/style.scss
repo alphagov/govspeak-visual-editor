@@ -46,5 +46,18 @@
 
 .menubar .govuk-select {
   min-width: 0;
+  margin: 0 10px 0 5px;
+}
+
+.menubar .headingSelect {
+  width: 48px;
+}
+
+.menubar .textBlockSelect {
+  width: 154px;
   margin-right: 5px;
+}
+
+.menubar .insertSelect {
+  width: 82px;
 }
