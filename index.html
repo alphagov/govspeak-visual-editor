@@ -76,12 +76,13 @@
       <div id="editor"></div>
       <textarea id="govspeak"></textarea>
     </div>
+    <script type="module">
+      import "./scss/example.scss";
+    </script>
     <script type="module" src="./lib/main.js"></script>
   </body>
 
   <script type="module">
-    import "./scss/example.scss";
-
     new GovspeakVisualEditor(
       document.querySelector("#content"),
       document.querySelector("#editor"),
