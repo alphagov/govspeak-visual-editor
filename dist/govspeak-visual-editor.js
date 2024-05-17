@@ -15026,14 +15026,14 @@ function H1(t) {
 function J1(t, e) {
   return [
     R1(t),
-    Ar(B1(t), e, "headingSelect"),
+    Ar(B1(t), e, "heading-select"),
     P1(t),
     U1(t),
     q1(t),
     V1(t),
     Q1(t),
-    Ar($1(t), e, "textBlockSelect"),
-    Ar(Y1(t), e, "insertSelect"),
+    Ar($1(t), e, "text-block-select"),
+    Ar(Y1(t), e, "insert-select"),
     W1(),
     H1()
   ];
