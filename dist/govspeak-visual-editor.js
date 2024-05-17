@@ -12707,7 +12707,7 @@ const _s = "address", qd = {
   schema: Nh,
   toGovspeak: Ah
 }, Symbol.toStringTag, { value: "Module" })), Th = "list_item", Ih = {
-  content: "paragraph",
+  content: "paragraph paragraph*",
   defining: !0,
   parseDOM: [{ tag: "li" }],
   toDOM() {
@@ -15005,7 +15005,7 @@ function Y1(t) {
       }
     },
     {
-      text: "Attachemnt",
+      text: "Attachment",
       command: () => {
       }
     }
