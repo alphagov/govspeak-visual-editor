@@ -43,3 +43,8 @@
 .menubar .govuk-button--secondary:not(:hover) {
   box-shadow: none;
 }
+
+.menubar .govuk-select {
+  min-width: 0;
+  margin-right: 5px;
+}
