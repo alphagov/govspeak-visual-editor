@@ -35,3 +35,12 @@ exports[`Links and email links 1`] = `
 
 [link](mailto:contact@example.com)"
 `;
+
+exports[`Steps 1`] = `
+"s1. step1
+s2. step2
+s3. step3
+
+
+"
+`;
