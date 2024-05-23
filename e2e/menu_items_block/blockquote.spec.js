@@ -47,7 +47,7 @@ test("renders blockquote menu items with expected disabled states", async ({
     await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
 });
 
-test("should render blockquote in the editor on multiple lines clearing on double enter when clicking on '$A' and typing", async ({
+test("should render blockquote in the editor on multiple lines clearing on double enter when clicking on 'Text Block' and typing", async ({
   page,
 }) => {
   await page.locator("#editor .ProseMirror.govspeak").focus();
@@ -58,9 +58,12 @@ test("should render blockquote in the editor on multiple lines clearing on doubl
     .locator('select:has-text("Add text block")')
     .selectOption("Blockquote");
   await page.getByText("New line").selectText();
-  await page.keyboard.type(
-    "Blockquote line 1\nBlockquote line 2\n\nNot blockquote\n",
-  );
+  await page.keyboard.type("Blockquote line 1");
+  await page.keyboard.press("Enter");
+  await page.keyboard.type("Blockquote line 2");
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("Enter");
+  await page.keyboard.type("Not blockquote");
 
   await expect(
     page.locator("#editor blockquote").getByText("Blockquote line 1"),
@@ -71,6 +74,10 @@ test("should render blockquote in the editor on multiple lines clearing on doubl
   await expect(
     page.locator("#editor blockquote").getByText("Not blockquote"),
   ).not.toBeVisible();
+
+  expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+    /> Blockquote line 1\n>\n> Blockquote line 2\n\nNot blockquote/,
+  );
 });
 
 test("should toggle blockquote for existing paragraph line", async ({
