@@ -55,3 +55,37 @@ Each 'node' file in that directory defines a few things:
 [NodeSpec]: https://prosemirror.net/docs/ref/#model.NodeSpec
 [prosemirror-model]: https://prosemirror.net/docs/ref/#model
 [prosemirror-inputrules]: https://prosemirror.net/docs/ref/#inputrules
+
+## Making changes
+
+You should keep track of relevant unreleased changed by adding to the `Unreleased` section of the `CHANGELOG.md`.
+
+## Publishing to npm
+
+1. Checkout **main** and pull latest changes.
+
+2. Create and checkout a new branch (`release-[version-number]`).
+   The version number is determined by looking at the [current "Unreleased" changes in CHANGELOG](/CHANGELOG.md) and updating the previous release number depending on the kind of entries:
+
+- `Breaking changes` corresponds to a `major` (1.X.X) change.
+- `New features` corresponds to a `minor` (X.1.X) change.
+- `Fixes` corresponds to a `patch` (X.X.1) change.
+
+For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
+See [Semantic Versioning](https://semver.org/) for more information.
+
+3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govspeak-visual-editor/commits/main/) to make sure the latest changes are correctly reflected in the [CHANGELOG](<(/CHANGELOG.md)>).
+
+4. Update [`package.json`](/package.json) version with the new version number.
+
+5. Run `npm install` to ensure you have the latest dependencies installed.
+
+6. Commit changes. These should include updates in the following files:
+
+- [`CHANGELOG.md`](/CHANGELOG.md)
+- [`package.json`](/package.json)
+- [`package-lock.json`](/package-lock.json)
+
+7. Create a pull request and copy the changelog text for the current version in the pull request description.
+
+8. Once the pull request is approved, merge into the `main` branch. This action will trigger the CI to publish the new version to NPM. A [dependabot](https://github.com/dependabot) pull request will automatically be raised in relevant applications.
