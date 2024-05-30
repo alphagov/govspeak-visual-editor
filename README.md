@@ -58,7 +58,7 @@ Each 'node' file in that directory defines a few things:
 
 ## Making changes
 
-You should keep track of relevant unreleased changed by adding to the `Unreleased` section of the `CHANGELOG.md`.
+You should keep track of relevant unreleased changed by adding to the "Unreleased" section of the [`CHANGELOG.md`](/CHANGELOG.md).
 
 ## Publishing to npm
 
@@ -72,9 +72,10 @@ You should keep track of relevant unreleased changed by adding to the `Unrelease
 - `Fixes` corresponds to a `patch` (X.X.1) change.
 
 For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
+
 See [Semantic Versioning](https://semver.org/) for more information.
 
-3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govspeak-visual-editor/commits/main/) to make sure the latest changes are correctly reflected in the [CHANGELOG](<(/CHANGELOG.md)>).
+3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govspeak-visual-editor/commits/main/) to make sure the latest changes are correctly reflected in the [CHANGELOG](/CHANGELOG.md)).
 
 4. Update [`package.json`](/package.json) version with the new version number.
 
