@@ -34,6 +34,8 @@ jobs:
 
   release:
     needs: vitest
+    permissions:
+      contents: write
     uses: alphagov/govuk-infrastructure/.github/workflows/publish-npm-package.yml@main
     with:
       deploy_to_github_pages: false
