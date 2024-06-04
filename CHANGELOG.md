@@ -8,6 +8,10 @@
 
 ## Unreleased
 
+## 1.0.6
+
+- Remove the dist folder ([PR here](https://github.com/alphagov/govspeak-visual-editor/pull/69))
+
 ## 1.0.5
 
 - Initial publishing of package to npm
