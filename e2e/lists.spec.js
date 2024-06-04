@@ -28,7 +28,7 @@ test.describe("bulleted list", () => {
     ).toBeVisible();
   });
 
-  test("should render bullet list in the editor clearing on double enter when clicking on '-' and typing", async ({
+  test("should render bullet list in the editor clearing on double enter", async ({
     page,
   }) => {
     await page.locator("#editor .ProseMirror.govspeak").focus();
@@ -61,6 +61,32 @@ test.describe("bulleted list", () => {
 
     expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
       /\* test 1\n\* test 2\n\* test 3\n\nNot list/,
+    );
+  });
+
+  test("should jump back onto previous list item when pressing backspace on an empty list item", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").focus();
+    await page.keyboard.type("New line\n");
+
+    await page.getByText("New line").click();
+    await page.getByTitle("Bullet list").click();
+    await page.getByText("New line").selectText();
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Backspace");
+    await page.keyboard.type(" extra");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not list");
+
+    await expect(
+      page.locator("#editor ul li").getByText("test 1 extra"),
+    ).toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /\* test 1 extra\n\nNot list/,
     );
   });
 
@@ -105,7 +131,7 @@ test.describe("numbered list", () => {
     ).toBeVisible();
   });
 
-  test("should render numbered list in the editor clearing on double enter when clicking on '1.' and typing", async ({
+  test("should render numbered list in the editor clearing on double enter", async ({
     page,
   }) => {
     await page.locator("#editor .ProseMirror.govspeak").focus();
@@ -141,6 +167,32 @@ test.describe("numbered list", () => {
     );
   });
 
+  test("should jump back onto previous list item when pressing backspace on an empty list item", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").focus();
+    await page.keyboard.type("New line\n");
+
+    await page.getByText("New line").click();
+    await page.getByTitle("Ordered list").click();
+    await page.getByText("New line").selectText();
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Backspace");
+    await page.keyboard.type(" extra");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not list");
+
+    await expect(
+      page.locator("#editor ol li").getByText("test 1 extra"),
+    ).toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /1\. test 1 extra\n\nNot list/,
+    );
+  });
+
   test("should toggle numbered list item for existing paragraph line", async ({
     page,
   }) => {
@@ -168,7 +220,7 @@ test.describe("steps", () => {
     ).toBeVisible();
   });
 
-  test("should render steps in the editor and clear on double enter", async ({
+  test("should render steps in the editor clearing on double enter", async ({
     page,
   }) => {
     await page.locator("#editor ol.steps").selectText();
@@ -196,6 +248,27 @@ test.describe("steps", () => {
 
     expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
       /s1\. Step test 1\ns2\. Step test 2\ns3\. Step test 3\n\n\nNot steps/,
+    );
+  });
+
+  test("should jump back onto previous list item when pressing backspace on an empty list item", async ({
+    page,
+  }) => {
+    await page.locator("#editor ol.steps").selectText();
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Backspace");
+    await page.keyboard.type(" extra");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not list");
+
+    await expect(
+      page.locator("#editor ol.steps li").getByText("test 1 extra"),
+    ).toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /s1\. test 1 extra\n\n\nNot list/,
     );
   });
 });
