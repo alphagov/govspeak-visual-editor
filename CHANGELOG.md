@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- Remove contact; example, information and warning callouts; and steps from the toolbar.
+
 ## 1.0.6
 
 - Remove the dist folder ([PR here](https://github.com/alphagov/govspeak-visual-editor/pull/69))

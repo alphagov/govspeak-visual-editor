@@ -10,12 +10,7 @@ test.describe("bulleted list", () => {
     await page.getByTitle("Ordered list").click();
     await expect(page.locator(".menubar")).toBeVisible();
     const enabledMenuButtons = [];
-    const disabledMenuButtons = [
-      "Heading 2",
-      "Bullet list",
-      "Ordered list",
-      "Steps",
-    ];
+    const disabledMenuButtons = ["Heading 2", "Bullet list", "Ordered list"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByTitle(button)).toBeEnabled();
@@ -88,12 +83,7 @@ test.describe("numbered list", () => {
     await page.getByTitle("Bullet list").click();
     await expect(page.locator(".menubar")).toBeVisible();
     const enabledMenuButtons = [];
-    const disabledMenuButtons = [
-      "Heading 2",
-      "Bullet list",
-      "Ordered list",
-      "Steps",
-    ];
+    const disabledMenuButtons = ["Heading 2", "Bullet list", "Ordered list"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByTitle(button)).toBeEnabled();
@@ -166,23 +156,6 @@ test.describe("numbered list", () => {
 });
 
 test.describe("steps", () => {
-  test("renders steps menu items", async ({ page }) => {
-    await page.getByTitle("Steps").click();
-    await expect(page.locator(".menubar")).toBeVisible();
-    const enabledMenuButtons = [];
-    const disabledMenuButtons = [
-      "Heading 2",
-      "Bullet list",
-      "Ordered list",
-      "Steps",
-    ];
-
-    for (const button of enabledMenuButtons)
-      await expect(page.getByTitle(button)).toBeEnabled();
-    for (const button of disabledMenuButtons)
-      await expect(page.getByTitle(button)).toBeDisabled();
-  });
-
   test("loads steps from the index file in the editor", async ({ page }) => {
     await expect(
       page.locator("#editor ol.steps li").getByText("Step 1"),
@@ -195,15 +168,10 @@ test.describe("steps", () => {
     ).toBeVisible();
   });
 
-  test("should render steps in the editor clearing on double enter when clicking on 's1.' and typing", async ({
+  test("should render steps in the editor and clear on double enter", async ({
     page,
   }) => {
-    await page.locator("#editor .ProseMirror.govspeak").focus();
-    await page.keyboard.type("New line\n");
-
-    await page.getByText("New line").click();
-    await page.getByTitle("Steps").click();
-    await page.getByText("New line").selectText();
+    await page.locator("#editor ol.steps").selectText();
     await page.keyboard.type("Step test 1");
     await page.keyboard.press("Enter");
     await page.keyboard.type("Step test 2");
@@ -229,18 +197,5 @@ test.describe("steps", () => {
     expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
       /s1\. Step test 1\ns2\. Step test 2\ns3\. Step test 3\n\n\nNot steps/,
     );
-  });
-
-  test("should toggle steps item for existing paragraph line", async ({
-    page,
-  }) => {
-    await page.locator("#editor .ProseMirror.govspeak").focus();
-    await page.keyboard.type("Testing steps\n");
-
-    await page.locator("#editor p").getByText("Testing steps").click();
-    await page.getByTitle("Steps").click();
-    await expect(
-      page.locator("#editor ol.steps li").getByText("Testing steps"),
-    ).toBeVisible();
   });
 });
