@@ -66,6 +66,8 @@ test("should render call to action in the editor on multiple lines clearing on d
   await page.keyboard.type("Action 1");
   await page.keyboard.press("Enter");
   await page.keyboard.type("Action 2");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.type("Action 3");
   await page.keyboard.press("Enter");
   await page.keyboard.press("Enter");
   await page.keyboard.type("Not action");
@@ -78,11 +80,14 @@ test("should render call to action in the editor on multiple lines clearing on d
     page.locator("#editor .call-to-action").getByText("Action 2"),
   ).toBeVisible();
   await expect(
+    page.locator("#editor .call-to-action").getByText("Action 3"),
+  ).toBeVisible();
+  await expect(
     page.locator("#editor .call-to-action").getByText("Not action"),
   ).not.toBeVisible();
 
   expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
-    /\$CTA\n\nAction 1\n\nAction 2\n\n\$CTA\n\nNot action/,
+    /\$CTA\n\nAction 1\n\nAction 2\n\nAction 3\n\n\$CTA\n\nNot action/,
   );
 });
 
