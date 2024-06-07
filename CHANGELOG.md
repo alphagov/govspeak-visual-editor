@@ -11,6 +11,7 @@
 - Remove contact; example, information and warning callouts; and steps from the toolbar.
 - Fix: address format and rendering
 - Fix: linebreak and backspace for new list items
+- Allow selected text to be linked to an email
 
 ## 1.0.6
 
