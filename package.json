@@ -1,6 +1,8 @@
 {
   "name": "govspeak-visual-editor",
   "version": "1.0.6",
+  "author": "Government Digital Service",
+  "license": "MIT",
   "type": "module",
   "files": [
     "dist"
