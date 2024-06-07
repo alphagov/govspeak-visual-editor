@@ -12,6 +12,7 @@
 - Fix: address format and rendering
 - Fix: linebreak and backspace for new list items
 - Allow selected text to be linked to an email
+- Fix: Link title tooltip for new links
 
 ## 1.0.6
 

@@ -43,6 +43,14 @@ test.describe("Link", () => {
       page.locator("#editor").getByText("example.com", { exact: true }),
     ).toHaveAttribute("href", "example.com");
   });
+
+  test("inserted links have the url as title attribute", async ({ page }) => {
+    page.on("dialog", (dialog) => dialog.accept("example.com"));
+    await page.getByTitle("Link", { exact: true }).click();
+    await expect(
+      page.locator("#editor").getByText("example.com", { exact: true }),
+    ).toHaveAttribute("title", "example.com");
+  });
 });
 
 test.describe("Email link", () => {
