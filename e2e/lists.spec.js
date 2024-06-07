@@ -42,7 +42,14 @@ test.describe("bulleted list", () => {
     await page.getByText("New line").click();
     await page.getByTitle("Bullet list").click();
     await page.getByText("New line").selectText();
-    await page.keyboard.type("test 1\ntest 2\n\nnot list\n");
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("test 2");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("test 3");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not list");
 
     await expect(
       page.locator("#editor ul li").getByText("test 1"),
@@ -51,8 +58,15 @@ test.describe("bulleted list", () => {
       page.locator("#editor ul li").getByText("test 2"),
     ).toBeVisible();
     await expect(
+      page.locator("#editor ul li").getByText("test 3"),
+    ).toBeVisible();
+    await expect(
       page.locator("#editor ul li").getByText("Not list"),
     ).not.toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /\* test 1\n\* test 2\n\* test 3\n\nNot list/,
+    );
   });
 
   test("should toggle bullet list item for existing paragraph line", async ({
@@ -110,7 +124,14 @@ test.describe("numbered list", () => {
     await page.getByText("New line").click();
     await page.getByTitle("Ordered list").click();
     await page.getByText("New line").selectText();
-    await page.keyboard.type("test 1\ntest 2\n\nnot list\n");
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("test 2");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("test 3");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not list");
 
     await expect(
       page.locator("#editor ol li").getByText("test 1"),
@@ -119,8 +140,15 @@ test.describe("numbered list", () => {
       page.locator("#editor ol li").getByText("test 2"),
     ).toBeVisible();
     await expect(
+      page.locator("#editor ol li").getByText("test 3"),
+    ).toBeVisible();
+    await expect(
       page.locator("#editor ol li").getByText("Not list"),
     ).not.toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /1\. test 1\n2\. test 2\n3\. test 3\n\nNot list/,
+    );
   });
 
   test("should toggle numbered list item for existing paragraph line", async ({
@@ -176,17 +204,31 @@ test.describe("steps", () => {
     await page.getByText("New line").click();
     await page.getByTitle("Steps").click();
     await page.getByText("New line").selectText();
-    await page.keyboard.type("test 1\ntest 2\n\nnot steps\n");
+    await page.keyboard.type("Step test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Step test 2");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Step test 3");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Not steps");
 
     await expect(
-      page.locator("#editor ol.steps li").getByText("Step 1"),
+      page.locator("#editor ol.steps li").getByText("Step test 1"),
     ).toBeVisible();
     await expect(
-      page.locator("#editor ol.steps li").getByText("Step 2"),
+      page.locator("#editor ol.steps li").getByText("Step test 2"),
+    ).toBeVisible();
+    await expect(
+      page.locator("#editor ol.steps li").getByText("Step test 3"),
     ).toBeVisible();
     await expect(
       page.locator("#editor ol.steps li").getByText("Not steps"),
     ).not.toBeVisible();
+
+    expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+      /s1\. Step test 1\ns2\. Step test 2\ns3\. Step test 3\n\n\nNot steps/,
+    );
   });
 
   test("should toggle steps item for existing paragraph line", async ({

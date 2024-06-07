@@ -74,6 +74,44 @@ test("should render address in the editor on multiple lines clearing on double e
   ).not.toBeVisible();
 });
 
+test("should produce expected markdown honouring multiple spacing for Enter and Shift+Enter keys", async ({
+  page,
+}) => {
+  await page.locator("#editor .ProseMirror.govspeak").focus();
+  await page.keyboard.type("New line\n");
+
+  await page.getByText("New line").click();
+  await page
+    .locator('select:has-text("Add text block")')
+    .selectOption("Address");
+  await page.getByText("New line").selectText();
+  await page.keyboard.type("Address line 1");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.type("Address line 2");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("Enter");
+
+  await page.keyboard.type("Not address\n");
+
+  await expect(
+    page.locator("#editor .address").getByText("Address line 1"),
+  ).toBeVisible();
+  await expect(
+    page.locator("#editor .address").getByText("Address line 2"),
+  ).toBeVisible();
+  await expect(
+    page.locator("#editor .address").getByText("Not address"),
+  ).not.toBeVisible();
+
+  expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+    /\$A\nAddress line 1\n\nAddress line 2\n\n\$A/,
+  );
+});
+
 test("should toggle address for existing paragraph line", async ({ page }) => {
   await page.locator("#editor .ProseMirror.govspeak").focus();
   await page.keyboard.type("Testing paragraph\n");

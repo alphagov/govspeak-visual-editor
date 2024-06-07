@@ -63,7 +63,13 @@ test("should render call to action in the editor on multiple lines clearing on d
     .locator('select:has-text("Add text block")')
     .selectOption("Call to action");
   await page.getByText("New line").selectText();
-  await page.keyboard.type("Action 1\nAction 2\n\nNot action\n");
+  await page.keyboard.type("Action 1");
+  await page.keyboard.press("Enter");
+  await page.keyboard.type("Action 2");
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("Enter");
+  await page.keyboard.type("Not action");
+  await page.keyboard.press("Enter");
 
   await expect(
     page.locator("#editor .call-to-action").getByText("Action 1"),
@@ -74,6 +80,10 @@ test("should render call to action in the editor on multiple lines clearing on d
   await expect(
     page.locator("#editor .call-to-action").getByText("Not action"),
   ).not.toBeVisible();
+
+  expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
+    /\$CTA\n\nAction 1\n\nAction 2\n\n\$CTA\n\nNot action/,
+  );
 });
 
 test("should toggle call to action for existing paragraph line", async ({
