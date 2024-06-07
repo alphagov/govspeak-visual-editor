@@ -9,6 +9,7 @@
 ## Unreleased
 
 - Change the behaviour of the heading select.
+- Introduce a link tooltip plugin
 
 ## 1.1.0
 

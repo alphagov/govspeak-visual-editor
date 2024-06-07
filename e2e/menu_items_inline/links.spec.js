@@ -44,12 +44,17 @@ test.describe("Link", () => {
     ).toHaveAttribute("href", "example.com");
   });
 
-  test("inserted links have the url as title attribute", async ({ page }) => {
-    page.on("dialog", (dialog) => dialog.accept("example.com"));
-    await page.getByTitle("Link", { exact: true }).click();
+  test("A tooltip is displayed with the URL of a link", async ({ page }) => {
     await expect(
-      page.locator("#editor").getByText("example.com", { exact: true }),
-    ).toHaveAttribute("title", "example.com");
+      page.locator(".tooltip").getByText("example.com", { exact: true }),
+    ).not.toBeVisible();
+    await page
+      .locator("#editor")
+      .getByText("Example link", { exact: true })
+      .click();
+    await expect(
+      page.locator(".tooltip").getByText("example.com", { exact: true }),
+    ).toBeVisible();
   });
 });
 

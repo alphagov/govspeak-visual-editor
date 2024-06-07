@@ -71,3 +71,19 @@
 .menubar .insert-select {
   width: 82px;
 }
+
+.tooltip-wrapper {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: bottom;
+}
+
+.tooltip {
+  position: relative;
+
+  background: white;
+  padding: 5px;
+  border: 2px solid black;
+  width: max-content;
+}
