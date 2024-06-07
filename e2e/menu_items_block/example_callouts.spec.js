@@ -25,7 +25,7 @@ test("renders example callout menu items with expected disabled states", async (
     "Link",
     "Email link",
   ];
-  const disabledMenuButtons = ["Heading 2"];
+  const disabledMenuButtons = [];
 
   for (const button of enabledMenuButtons)
     await expect(page.getByTitle(button, { exact: true })).toBeEnabled();
@@ -33,7 +33,7 @@ test("renders example callout menu items with expected disabled states", async (
     await expect(page.getByTitle(button, { exact: true })).toBeDisabled();
 
   const enabledSelectOptions = ["Call to action", "Address", "Blockquote"];
-  const disabledSelectOptions = ["H3", "H4"];
+  const disabledSelectOptions = ["Heading 2", "Heading 3", "Heading 4"];
 
   for (const option of enabledSelectOptions)
     await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();

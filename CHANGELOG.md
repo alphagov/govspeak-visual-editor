@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- Change the behaviour of the heading select.
+
 ## 1.1.0
 
 - Remove contact; example, information and warning callouts; and steps from the toolbar.

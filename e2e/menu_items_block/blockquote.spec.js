@@ -14,7 +14,7 @@ test("renders blockquote menu items with expected disabled states", async ({
   await expect(page.locator(".menubar")).toBeVisible();
 
   const enabledMenuButtons = ["Link", "Email link"];
-  const disabledMenuButtons = ["Heading 2", "Bullet list", "Ordered list"];
+  const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
   for (const button of enabledMenuButtons)
     await expect(page.getByTitle(button, { exact: true })).toBeEnabled();
@@ -23,8 +23,9 @@ test("renders blockquote menu items with expected disabled states", async ({
 
   const enabledSelectOptions = [];
   const disabledSelectOptions = [
-    "H3",
-    "H4",
+    "Heading 2",
+    "Heading 3",
+    "Heading 4",
     "Call to action",
     "Address",
     "Blockquote",

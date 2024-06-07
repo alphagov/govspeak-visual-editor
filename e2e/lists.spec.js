@@ -10,12 +10,27 @@ test.describe("bulleted list", () => {
     await page.getByTitle("Ordered list").click();
     await expect(page.locator(".menubar")).toBeVisible();
     const enabledMenuButtons = [];
-    const disabledMenuButtons = ["Heading 2", "Bullet list", "Ordered list"];
+    const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByTitle(button)).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByTitle(button)).toBeDisabled();
+
+    const enabledSelectOptions = [];
+    const disabledSelectOptions = [
+      "Call to action",
+      "Address",
+      "Blockquote",
+      "Heading 2",
+      "Heading 3",
+      "Heading 4",
+    ];
+
+    for (const option of enabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();
+    for (const option of disabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
   });
 
   test("loads bullet list from the index file in the editor", async ({
@@ -109,12 +124,27 @@ test.describe("numbered list", () => {
     await page.getByTitle("Bullet list").click();
     await expect(page.locator(".menubar")).toBeVisible();
     const enabledMenuButtons = [];
-    const disabledMenuButtons = ["Heading 2", "Bullet list", "Ordered list"];
+    const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByTitle(button)).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByTitle(button)).toBeDisabled();
+
+    const enabledSelectOptions = [];
+    const disabledSelectOptions = [
+      "Call to action",
+      "Address",
+      "Blockquote",
+      "Heading 2",
+      "Heading 3",
+      "Heading 4",
+    ];
+
+    for (const option of enabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();
+    for (const option of disabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
   });
 
   test("loads numbered list from the index file in the editor", async ({
