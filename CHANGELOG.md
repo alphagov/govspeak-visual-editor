@@ -8,11 +8,14 @@
 
 ## Unreleased
 
+## 1.1.0
+
 - Remove contact; example, information and warning callouts; and steps from the toolbar.
 - Fix: address format and rendering
 - Fix: linebreak and backspace for new list items
 - Allow selected text to be linked to an email
 - Fix: Link title tooltip for new links
+- Add licence
 
 ## 1.0.6
 
