@@ -5,18 +5,23 @@ test.beforeEach(async ({ page }) => {
   await page.goto(VISUAL_EDITOR_URL);
 });
 
+test("loads example callout from the index file in the editor", async ({
+  page,
+}) => {
+  await expect(
+    page.locator("#editor .example").getByText("This is an example callout"),
+  ).toBeVisible();
+});
+
 test("renders example callout menu items with expected disabled states", async ({
   page,
 }) => {
-  await page
-    .locator('select:has-text("Add text block")')
-    .selectOption("Example callout");
+  await page.locator("#editor .example").click();
   await expect(page.locator(".menubar")).toBeVisible();
 
   const enabledMenuButtons = [
     "Bullet list",
     "Ordered list",
-    "Steps",
     "Link",
     "Email link",
   ];
@@ -27,16 +32,8 @@ test("renders example callout menu items with expected disabled states", async (
   for (const button of disabledMenuButtons)
     await expect(page.getByTitle(button, { exact: true })).toBeDisabled();
 
-  const enabledSelectOptions = [
-    "Call to action",
-    "Information callout",
-    "Warning callout",
-    "Example callout",
-    "Contact",
-    "Address",
-    "Blockquote",
-  ];
-  const disabledSelectOptions = ["H3", "H4", "H5", "H6"];
+  const enabledSelectOptions = ["Call to action", "Address", "Blockquote"];
+  const disabledSelectOptions = ["H3", "H4"];
 
   for (const option of enabledSelectOptions)
     await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();
@@ -44,25 +41,10 @@ test("renders example callout menu items with expected disabled states", async (
     await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
 });
 
-test("loads example callout from the index file in the editor", async ({
-  page,
-}) => {
-  await expect(
-    page.locator("#editor .example").getByText("This is an example callout"),
-  ).toBeVisible();
-});
-
 test("should render example callout in the editor on multiple lines clearing on double enter when clicking on '$A' and typing", async ({
   page,
 }) => {
-  await page.locator("#editor .ProseMirror.govspeak").focus();
-  await page.keyboard.type("New line\n");
-
-  await page.getByText("New line").click();
-  await page
-    .locator('select:has-text("Add text block")')
-    .selectOption("Example callout");
-  await page.getByText("New line").selectText();
+  await page.locator("#editor .example").selectText();
   await page.keyboard.type("Example 1\nExample 2\n\nNot example\n");
 
   await expect(
@@ -76,39 +58,16 @@ test("should render example callout in the editor on multiple lines clearing on 
   ).not.toBeVisible();
 });
 
-test.fixme(
-  "should toggle example callout for existing paragraph line",
-  async ({ page }) => {
-    await page.locator("#editor .ProseMirror.govspeak").focus();
-    await page.keyboard.type("Testing paragraph\n");
-
-    await page.locator("#editor p").getByText("Testing paragraph").click();
-    await page
-      .locator('select:has-text("Add text block")')
-      .selectOption("Example callout");
-    await expect(
-      page.locator("#editor .example").getByText("Testing paragraph"),
-    ).toBeVisible();
-  },
-);
-
 test("should allow embedding of other content", async ({ page }) => {
-  await page
-    .locator('select:has-text("Add text block")')
-    .selectOption("Example callout");
-  await page.locator("#editor .ProseMirror.govspeak").focus();
-  await page.keyboard.type("Testing example callout\n\n");
+  await page.locator("#editor .example").selectText();
 
   await page
-    .locator("#editor .example")
-    .getByText("Testing example callout")
-    .click();
-  await page
     .locator('select:has-text("Add text block")')
-    .selectOption("Example callout");
+    .selectOption("Call to action");
+
   await expect(
     page
-      .locator("#editor .example .example")
-      .getByText("Testing example callout"),
+      .locator("#editor .example .call-to-action")
+      .getByText("This is an example callout"),
   ).toBeVisible();
 });

@@ -10,12 +10,20 @@ test.describe("H2", () => {
     await page.getByTitle("Heading 2").click();
     await expect(page.locator(".menubar")).toBeVisible();
     const enabledMenuButtons = ["Heading 2"];
-    const disabledMenuButtons = ["Bullet list", "Ordered list", "Steps"];
+    const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
     for (const button of enabledMenuButtons)
       await expect(page.getByTitle(button)).toBeEnabled();
     for (const button of disabledMenuButtons)
       await expect(page.getByTitle(button)).toBeDisabled();
+
+    const enabledSelectOptions = ["H3", "H4"];
+    const disabledSelectOptions = ["Call to action", "Address", "Blockquote"];
+
+    for (const option of enabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();
+    for (const option of disabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
   });
 
   test("loads H2 from the index file in the editor", async ({ page }) => {
@@ -70,28 +78,27 @@ test.describe("H2", () => {
   });
 });
 
-test.fixme("H3", () => {
+test.describe("H3", () => {
   test("renders H3 menu items with expected disabled state", async ({
     page,
   }) => {
-    await page.getByText("H3", { exact: true }).click();
+    await page.locator('select:has-text("H")').first().selectOption("H3");
     await expect(page.locator(".menubar")).toBeVisible();
-    const visibleMenuButtons = ["p", "H2", "^", "%"];
-    const disabledMenuButtons = [
-      "H3",
-      "1.",
-      "-",
-      "“”",
-      "$A",
-      "$CTA",
-      "$C",
-      "$E",
-    ];
+    const enabledMenuButtons = ["Heading 2"];
+    const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
-    for (const button of visibleMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeVisible();
+    for (const button of enabledMenuButtons)
+      await expect(page.getByTitle(button)).toBeEnabled();
     for (const button of disabledMenuButtons)
-      await expect(page.getByText(button, { exact: true })).toBeDisabled();
+      await expect(page.getByTitle(button)).toBeDisabled();
+
+    const enabledSelectOptions = ["H3", "H4"];
+    const disabledSelectOptions = ["Call to action", "Address", "Blockquote"];
+
+    for (const option of enabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeEnabled();
+    for (const option of disabledSelectOptions)
+      await expect(page.locator(`option:has-text("${option}")`)).toBeDisabled();
   });
 
   test("loads H3 from the index file in the editor", async ({ page }) => {
@@ -107,7 +114,7 @@ test.fixme("H3", () => {
     await page.keyboard.type("New line\n");
 
     await page.getByText("New line").click();
-    await page.getByText("H3", { exact: true }).click();
+    await page.locator('select:has-text("H")').first().selectOption("H3");
     await page.getByText("New line").selectText();
     await page.keyboard.type("Testing H3!\nTesting not H3!\n");
     await expect(
@@ -125,7 +132,7 @@ test.fixme("H3", () => {
     await page.keyboard.type("Testing paragraph\n");
 
     await page.locator("#editor p").getByText("Testing paragraph").click();
-    await page.getByText("H3", { exact: true }).click();
+    await page.locator('select:has-text("H")').first().selectOption("H3");
     await expect(
       page.locator("#editor h3").getByText("Testing paragraph"),
     ).toBeVisible();
@@ -134,12 +141,12 @@ test.fixme("H3", () => {
   test("should toggle H3 headings off for existing heading", async ({
     page,
   }) => {
-    await page.getByText("H3", { exact: true }).click();
+    await page.locator('select:has-text("H")').first().selectOption("H3");
     await page.locator("#editor .ProseMirror.govspeak").focus();
     await page.keyboard.type("Testing heading\n");
 
     await page.locator("#editor h3").getByText("Testing heading").click();
-    await page.getByText("p", { exact: true }).click();
+    await page.locator('select:has-text("H")').first().selectOption("H3");
     await expect(
       page.locator("#editor p").getByText("Testing heading"),
     ).toBeVisible();
