@@ -61,6 +61,8 @@ test("should render blockquote in the editor on multiple lines clearing on doubl
   await page.keyboard.type("Blockquote line 1");
   await page.keyboard.press("Enter");
   await page.keyboard.type("Blockquote line 2");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.type("Blockquote line 3");
   await page.keyboard.press("Enter");
   await page.keyboard.press("Enter");
   await page.keyboard.type("Not blockquote");
@@ -72,11 +74,14 @@ test("should render blockquote in the editor on multiple lines clearing on doubl
     page.locator("#editor blockquote").getByText("Blockquote line 2"),
   ).toBeVisible();
   await expect(
+    page.locator("#editor blockquote").getByText("Blockquote line 3"),
+  ).toBeVisible();
+  await expect(
     page.locator("#editor blockquote").getByText("Not blockquote"),
   ).not.toBeVisible();
 
   expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
-    /> Blockquote line 1\n>\n> Blockquote line 2\n\nNot blockquote/,
+    /> Blockquote line 1\n>\n> Blockquote line 2\n>\n> Blockquote line 3\n\nNot blockquote/,
   );
 });
 

@@ -86,9 +86,11 @@ test("should produce expected markdown honouring multiple spacing for Enter and 
     .selectOption("Address");
   await page.getByText("New line").selectText();
   await page.keyboard.type("Address line 1");
-  await page.keyboard.press("Shift+Enter");
-  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Enter");
   await page.keyboard.type("Address line 2");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.press("Shift+Enter");
+  await page.keyboard.type("Address line 3");
   await page.keyboard.press("Shift+Enter");
   await page.keyboard.press("Shift+Enter");
   await page.keyboard.press("Shift+Enter");
@@ -104,11 +106,14 @@ test("should produce expected markdown honouring multiple spacing for Enter and 
     page.locator("#editor .address").getByText("Address line 2"),
   ).toBeVisible();
   await expect(
+    page.locator("#editor .address").getByText("Address line 3"),
+  ).toBeVisible();
+  await expect(
     page.locator("#editor .address").getByText("Not address"),
   ).not.toBeVisible();
 
   expect(await page.locator("textarea#govspeak").inputValue()).toMatch(
-    /\$A\nAddress line 1\n\nAddress line 2\n\n\$A/,
+    /\$A\nAddress line 1\nAddress line 2\n\nAddress line 3\n\n\$A/,
   );
 });
 

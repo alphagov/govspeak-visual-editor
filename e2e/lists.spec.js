@@ -45,7 +45,7 @@ test.describe("bulleted list", () => {
     await page.keyboard.type("test 1");
     await page.keyboard.press("Enter");
     await page.keyboard.type("test 2");
-    await page.keyboard.press("Enter");
+    await page.keyboard.press("Shift+Enter");
     await page.keyboard.type("test 3");
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
@@ -127,7 +127,7 @@ test.describe("numbered list", () => {
     await page.keyboard.type("test 1");
     await page.keyboard.press("Enter");
     await page.keyboard.type("test 2");
-    await page.keyboard.press("Enter");
+    await page.keyboard.press("Shift+Enter");
     await page.keyboard.type("test 3");
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
@@ -207,7 +207,7 @@ test.describe("steps", () => {
     await page.keyboard.type("Step test 1");
     await page.keyboard.press("Enter");
     await page.keyboard.type("Step test 2");
-    await page.keyboard.press("Enter");
+    await page.keyboard.press("Shift+Enter");
     await page.keyboard.type("Step test 3");
     await page.keyboard.press("Enter");
     await page.keyboard.press("Enter");
