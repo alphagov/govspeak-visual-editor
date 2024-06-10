@@ -22,12 +22,12 @@ body {
   gap: 20px;
 }
 
-#editor,
-#govspeak {
-  flex: 1;
+#editor {
+  min-width: 750px;
 }
 
 #govspeak {
+  width: 100%;
   padding: 50px 15px 15px;
   font-size: 16px;
 }
