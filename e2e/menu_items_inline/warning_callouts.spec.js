@@ -19,7 +19,7 @@ test("renders warning callout menu items with expected disabled states", async (
   await page.locator("#editor .help-notice").click();
   await expect(page.locator(".menubar")).toBeVisible();
 
-  const enabledMenuButtons = ["Heading 2", "Link", "Email link"];
+  const enabledMenuButtons = ["Link", "Email link"];
   const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
   for (const button of enabledMenuButtons)
@@ -27,7 +27,13 @@ test("renders warning callout menu items with expected disabled states", async (
   for (const button of disabledMenuButtons)
     await expect(page.getByTitle(button, { exact: true })).toBeDisabled();
 
-  const enabledSelectOptions = ["H3", "H4", "Call to action", "Address"];
+  const enabledSelectOptions = [
+    "Heading 2",
+    "Heading 3",
+    "Heading 4",
+    "Call to action",
+    "Address",
+  ];
   const disabledSelectOptions = ["Blockquote"];
 
   for (const option of enabledSelectOptions)
