@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+## 1.2.0
+
 - Change the behaviour of the heading select.
 - Introduce a link tooltip plugin
 
