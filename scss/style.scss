@@ -80,10 +80,18 @@
 }
 
 .tooltip {
+  z-index: 1;
+
   position: relative;
 
   background: white;
   padding: 5px;
   border: 2px solid black;
   width: max-content;
+}
+
+.problem {
+  background: #fdd;
+  border-bottom: 2px solid #f22;
+  margin-bottom: -2px;
 }
