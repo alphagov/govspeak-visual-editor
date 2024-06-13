@@ -37,7 +37,7 @@ These events can then be listened to by any part of the application to trigger G
 
 3. **Implementing an Event Emitter System**:
    - The chosen approach is to implement an Event Emitter system within the Visual Editor. This allows the component to emit events for user interactions such as button clicks and select changes. 
-     These events can be listened to by other parts of the application to perform actions like GA4 tracking.
+     These events can be listened to by the Publishing Apps that imported the Visual Editor to perform actions like GA4 tracking.
    - **Why we chose this option**: This approach decouples the GA4 tracking logic from the Visual Editor, making it easier to maintain and update. 
      It also provides flexibility to handle different types of events without modifying the core Visual Editor component. 
      This method adheres to the separation of concerns principle and simplifies the component logic.
@@ -46,52 +46,67 @@ These events can then be listened to by any part of the application to trigger G
 ## Decision
 
 We will implement an Event Emitter system in the Visual Editor. The component will emit events for user interactions such as button clicks and dropdown selections. 
-These events will carry necessary data attributes, and other parts of the application can listen to these events to perform actions like GA tracking.
+These events will carry the bare minimum information that is needed by the Publishing Apps, such as button text and select text, 
+and the Publishing Apps can listen to these events to perform actions like GA tracking.
 
 The following steps outline the implementation:
 
 1. Create an `EventEmitter` class to manage event listeners and emit events.
 2. Integrate the `EventEmitter` into the `VisualEditor` component.
 3. Emit events from the `VisualEditor` component when user interactions occur (e.g., `clickButton`, `selectOption`).
-4. Other parts of the application can register event listeners to handle these events and push data to the GA data layer as needed.
+4. Publishing Apps can register event listeners to handle these events and push data to the GA data layer as needed.
 
-The proposed class diagram is as follows:
 
 ```mermaid
 classDiagram
     class EventEmitter {
-        +events: Object
+        -events: Object
         +subscribe(event: String, listener: Function): void
         +unsubscribe(event: String, listenerToRemove: Function): void
-        +emit(event: String, data: Object): void
+        -emit(event: String, data: Object): void
     }
+```
 
-    class VisualEditor {
-        +clickButton(): void
-        +selectOption(): void
-    }
-    
-    EventEmitter <|-- VisualEditor
-    
-    class PublishingApp {
-        +visualEditor: VisualEditor
-        +onClickButton(data: Object): void
-        +onSelectOption(data: Object): void
-    }
-    
-    VisualEditor --> "1..*" EventEmitter : emits events
-    PublishingApp --> "1..*" VisualEditor : listens to events
-    
-    EventEmitter : +events
-    EventEmitter : +subscribe(event, listener)
-    EventEmitter : +unsubscribe(event, listenerToRemove)
-    EventEmitter : +emit(event, data)
-    
-    VisualEditor : +clickButton()
-    VisualEditor : +selectOption()
-    
-    PublishingApp : +onClickButton(data)
-    PublishingApp : +onSelectOption(data)
+
+Draft pseudocode examples:
+
+### Option 1: passing a Hooks object with the events and callbacks
+
+```javascript
+const Hooks = {
+  onClick(el) {
+    console.log("click event on element", el)
+  },
+  onSelectOption(el) {
+    window.GovUK.analytics.track({"type": "selected option", "action": el.value()})
+  }
+}
+
+
+const editor = new GovspeakVisualEditor(
+  document.querySelector("#content"),
+  document.querySelector("#editor"),
+  document.querySelector("#govspeak"),
+  hooks: Hooks
+);
+```
+
+### Option 2: Actively subscribe to the events
+
+```javascript
+const editor = new GovspeakVisualEditor(
+  document.querySelector("#content"),
+  document.querySelector("#editor"),
+  document.querySelector("#govspeak"),
+);
+
+editor.subscribe("onClick", (el) => {
+  console.log("click event on element", el)
+})
+
+editor.subscribe("onSelectOption", (el) => {
+  window.GovUK.analytics.track({"type": "selected option", "action": el.value()})
+})
 ```
 
 ## Consequences
