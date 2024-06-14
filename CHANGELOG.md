@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+## 1.3.0
+
 - GA4 tracking added to buttons
 
 ## 1.2.0
