@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- Small adjustments to link tooltips
+
 ## 1.3.0
 
 - GA4 tracking added to buttons
