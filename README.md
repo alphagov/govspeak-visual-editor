@@ -90,3 +90,11 @@ See [Semantic Versioning](https://semver.org/) for more information.
 7. Create a pull request and copy the changelog text for the current version in the pull request description.
 
 8. Once the pull request is approved, merge into the `main` branch. This action will trigger the CI to publish the new version to NPM. A [dependabot](https://github.com/dependabot) pull request will automatically be raised in relevant applications.
+
+## GA4 Tracking
+
+GA4 tracking data attributes have been added to the following components of the Visual Editor:
+
+- Toolbar button clicks
+
+**Please note**: data-module `ga4-event-tracker` needs to be initialised in the parent application that is importing the visual editor for this tracking to work.

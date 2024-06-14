@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- GA4 tracking added to buttons
+
 ## 1.2.0
 
 - Change the behaviour of the heading select.

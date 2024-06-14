@@ -35,6 +35,7 @@ export default {
     }),
   ],
   test: {
+    environment: "jsdom",
     exclude: [
       "**/node_modules/**",
       "**/.{idea,git,cache,output,temp}/**",
