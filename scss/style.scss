@@ -80,10 +80,18 @@
 }
 
 .tooltip {
-  position: relative;
+  z-index: 1;
+
+  position: absolute;
 
   background: white;
   padding: 5px;
   border: 2px solid black;
+  display: flex;
   width: max-content;
+  max-width: 60%;
+}
+
+.tooltip a {
+  word-break: break-all;
 }
