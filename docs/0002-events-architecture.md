@@ -56,59 +56,6 @@ The following steps outline the implementation:
 3. Emit events from the `VisualEditor` component when user interactions occur (e.g., `clickButton`, `selectOption`).
 4. Publishing Apps can register event listeners to handle these events and push data to the GA data layer as needed.
 
-
-```mermaid
-classDiagram
-    class EventEmitter {
-        -events: Object
-        +subscribe(event: String, listener: Function): void
-        +unsubscribe(event: String, listenerToRemove: Function): void
-        -emit(event: String, data: Object): void
-    }
-```
-
-
-Draft pseudocode examples:
-
-### Option 1: passing a Hooks object with the events and callbacks
-
-```javascript
-const Hooks = {
-  onClick(el) {
-    console.log("click event on element", el)
-  },
-  onSelectOption(el) {
-    window.GovUK.analytics.track({"type": "selected option", "action": el.value()})
-  }
-}
-
-
-const editor = new GovspeakVisualEditor(
-  document.querySelector("#content"),
-  document.querySelector("#editor"),
-  document.querySelector("#govspeak"),
-  hooks: Hooks
-);
-```
-
-### Option 2: Actively subscribe to the events
-
-```javascript
-const editor = new GovspeakVisualEditor(
-  document.querySelector("#content"),
-  document.querySelector("#editor"),
-  document.querySelector("#govspeak"),
-);
-
-editor.subscribe("onClick", (el) => {
-  console.log("click event on element", el)
-})
-
-editor.subscribe("onSelectOption", (el) => {
-  window.GovUK.analytics.track({"type": "selected option", "action": el.value()})
-})
-```
-
 ## Consequences
 
 ### Benefits:
