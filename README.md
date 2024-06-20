@@ -97,4 +97,9 @@ GA4 tracking data attributes have been added to the following components of the 
 
 - Toolbar button clicks
 
+The following events are emitted from the Visual Editor. Please add an event handler to any parent wrapper to handle the event for tracking purposes.
+
+- `visualEditorSelectChange` - emitted when select values change on dropdowns in the toolbar. Details sent with the event can be accessed via:
+  - `event.detail.selectText` which returns the text of the selected option in the dropdown
+
 **Please note**: data-module `ga4-event-tracker` needs to be initialised in the parent application that is importing the visual editor for this tracking to work.
