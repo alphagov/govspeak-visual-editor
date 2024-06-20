@@ -72,11 +72,18 @@
   width: 82px;
 }
 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .tooltip-wrapper {
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: bottom;
+  animation: fadeIn 1s;
 }
 
 .tooltip {
