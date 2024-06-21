@@ -10,6 +10,7 @@
 
 - Add remove button to link tooltip
 - Fix tabbing through the toolbar in Firefox - [PR](https://github.com/alphagov/govspeak-visual-editor/pull/123)
+- Add skipped heading level linting - [PR #125](https://github.com/alphagov/govspeak-visual-editor/pull/125)
 
 ## 1.4.0
 

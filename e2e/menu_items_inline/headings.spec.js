@@ -184,3 +184,43 @@ test.describe("Select", () => {
     await expect(page.locator('select:has-text("Paragraph")')).toHaveValue("2");
   });
 });
+
+test.describe("Linting", () => {
+  test("Should highlight a skipped heading level and provide a tooltip", async ({
+    page,
+  }) => {
+    await page.locator("#editor h3").selectText();
+    await page
+      .locator('select:has-text("Paragraph")')
+      .selectOption("Heading 4");
+    await expect(
+      page.locator(".visual-editor__highlight--error"),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator(".visual-editor__tooltip")
+        .getByText("Skipped heading from H2 to H4. Consider H3 instead.", {
+          exact: true,
+        }),
+    ).toBeVisible();
+  });
+
+  test("Should expect the first heading in document to be an H2", async ({
+    page,
+  }) => {
+    await page.locator("#editor h2").selectText();
+    await page
+      .locator('select:has-text("Paragraph")')
+      .selectOption("Heading 4");
+    await expect(
+      page.locator(".visual-editor__highlight--error"),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator(".visual-editor__tooltip")
+        .getByText("The first heading in a document must be H2.", {
+          exact: true,
+        }),
+    ).toBeVisible();
+  });
+});
