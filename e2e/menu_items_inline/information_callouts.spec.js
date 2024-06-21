@@ -19,7 +19,7 @@ test("renders information callout menu items with expected disabled states", asy
   page,
 }) => {
   await page.locator("#editor .info-notice").click();
-  await expect(page.locator(".menubar")).toBeVisible();
+  await expect(page.locator(".visual-editor__menu")).toBeVisible();
 
   const enabledMenuButtons = ["Link", "Email link"];
   const disabledMenuButtons = ["Bullet list", "Ordered list"];

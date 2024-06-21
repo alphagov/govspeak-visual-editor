@@ -17,7 +17,7 @@ test("renders example callout menu items with expected disabled states", async (
   page,
 }) => {
   await page.locator("#editor .example").click();
-  await expect(page.locator(".menubar")).toBeVisible();
+  await expect(page.locator(".visual-editor__menu")).toBeVisible();
 
   const enabledMenuButtons = [
     "Bullet list",

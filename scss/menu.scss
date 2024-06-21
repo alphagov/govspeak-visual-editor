@@ -1,4 +1,4 @@
-.menubar {
+.visual-editor__menu {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -11,14 +11,14 @@
   box-shadow: 0 2px 0 0 black;
 }
 
-.menubar:has(+ .ProseMirror:focus) {
+.visual-editor__menu:has(+ .visual-editor__contenteditable:focus) {
   box-shadow:
     inset 0 -3px 0 0 #fd0,
     0 4px 0 0 black,
     0 -6px 0 3px white;
 }
 
-.menubar .govuk-button {
+.visual-editor__menu .visual-editor__menu-button {
   height: 38px;
   width: 40px;
   margin: 0 5px 2px 0;
@@ -28,24 +28,24 @@
   align-items: center;
 }
 
-.menubar .govuk-button--secondary:not(:hover) {
+.visual-editor__menu-button:not(:hover) {
   box-shadow: none;
 }
 
-.menubar .govuk-select {
+.visual-editor__menu-select {
   min-width: 0;
   margin: 0 10px 0 5px;
 }
 
-.menubar .heading-select {
+.visual-editor__menu-heading-select {
   width: 120px;
 }
 
-.menubar .text-block-select {
+.visual-editor__menu-text-block-select {
   width: 154px;
   margin-right: 5px;
 }
 
-.menubar .insert-select {
+.visual-editor__menu-insert-select {
   width: 82px;
 }

@@ -46,14 +46,18 @@ test.describe("Link", () => {
 
   test("A tooltip is displayed with the URL of a link", async ({ page }) => {
     await expect(
-      page.locator(".tooltip").getByText("example.com", { exact: true }),
+      page
+        .locator(".visual-editor__tooltip")
+        .getByText("example.com", { exact: true }),
     ).not.toBeVisible();
     await page
       .locator("#editor")
       .getByText("Example link", { exact: true })
       .click();
     await expect(
-      page.locator(".tooltip").getByText("example.com", { exact: true }),
+      page
+        .locator(".visual-editor__tooltip")
+        .getByText("example.com", { exact: true }),
     ).toBeVisible();
   });
 });

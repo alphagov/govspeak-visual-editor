@@ -11,7 +11,7 @@ test("renders blockquote menu items with expected disabled states", async ({
   await page
     .locator('select:has-text("Add text block")')
     .selectOption("Call to action");
-  await expect(page.locator(".menubar")).toBeVisible();
+  await expect(page.locator(".visual-editor__menu")).toBeVisible();
 
   const enabledMenuButtons = [
     "Bullet list",

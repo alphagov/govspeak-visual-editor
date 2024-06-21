@@ -10,7 +10,7 @@ test.describe("Heading 2", () => {
     await page
       .locator('select:has-text("Paragraph")')
       .selectOption("Heading 2");
-    await expect(page.locator(".menubar")).toBeVisible();
+    await expect(page.locator(".visual-editor__menu")).toBeVisible();
     const enabledMenuButtons = [];
     const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
@@ -94,7 +94,7 @@ test.describe("Heading 3", () => {
     await page
       .locator('select:has-text("Paragraph")')
       .selectOption("Heading 3");
-    await expect(page.locator(".menubar")).toBeVisible();
+    await expect(page.locator(".visual-editor__menu")).toBeVisible();
     const enabledMenuButtons = [];
     const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
