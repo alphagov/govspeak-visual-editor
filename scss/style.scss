@@ -3,3 +3,9 @@
 @import "./menu";
 @import "./prosemirror-overrides";
 @import "./tooltip";
+
+.visual-editor__highlight--error {
+  background: #fdd;
+  border-bottom: 2px solid #f22;
+  margin-bottom: -2px;
+}
