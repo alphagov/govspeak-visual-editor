@@ -21,3 +21,34 @@
 .visual-editor__tooltip-link {
   word-break: break-all;
 }
+
+.visual-editor__tooltip-button {
+  background: none;
+  border: none;
+  margin: 0 0 0 10px;
+  padding: 0;
+  height: fit-content;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+}
+
+.visual-editor__tooltip-button:hover {
+  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-skip: none;
+  text-decoration-skip: none;
+}
+
+.visual-editor__tooltip-button--destructive {
+  color: #d4351c;
+}
+
+.visual-editor__tooltip-button--destructive:hover {
+  color: #bd2f19;
+}
