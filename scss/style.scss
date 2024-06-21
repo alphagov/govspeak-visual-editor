@@ -1,11 +1,5 @@
 @import "prosemirror-view/style/prosemirror.css";
-@import "prosemirror-menu/style/menu.css";
-@import "./prosemirror-example-setup";
 @import "prosemirror-gapcursor/style/gapcursor.css";
-
-:root {
-  font-family: "GDS Transport", arial, sans-serif;
-}
 
 .ProseMirror {
   padding: 15px;
