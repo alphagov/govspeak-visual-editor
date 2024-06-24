@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+## 1.4.0
+
 - Small adjustments to link tooltips
 - Add tracking events to dropdown selects
 
