@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test.describe("bulleted list", () => {
   test("renders bullet list menu items", async ({ page }) => {
     await page.getByTitle("Ordered list").click();
-    await expect(page.locator(".menubar")).toBeVisible();
+    await expect(page.locator(".visual-editor__menu")).toBeVisible();
     const enabledMenuButtons = [];
     const disabledMenuButtons = ["Bullet list", "Ordered list"];
 
@@ -122,7 +122,7 @@ test.describe("bulleted list", () => {
 test.describe("numbered list", () => {
   test("renders numbered list menu items", async ({ page }) => {
     await page.getByTitle("Bullet list").click();
-    await expect(page.locator(".menubar")).toBeVisible();
+    await expect(page.locator(".visual-editor__menu")).toBeVisible();
     const enabledMenuButtons = [];
     const disabledMenuButtons = ["Bullet list", "Ordered list"];
 

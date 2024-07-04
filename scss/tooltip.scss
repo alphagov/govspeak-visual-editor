@@ -1,0 +1,23 @@
+.visual-editor__tooltip-wrapper {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: bottom;
+}
+
+.visual-editor__tooltip {
+  z-index: 1;
+
+  position: absolute;
+
+  background: white;
+  padding: 5px;
+  border: 2px solid black;
+  display: flex;
+  width: max-content;
+  max-width: 60%;
+}
+
+.visual-editor__tooltip-link {
+  word-break: break-all;
+}

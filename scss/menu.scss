@@ -1,0 +1,51 @@
+.visual-editor__menu {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f3f2f1;
+  margin-bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
+  box-shadow: 0 2px 0 0 black;
+}
+
+.visual-editor__menu:has(+ .visual-editor__contenteditable:focus) {
+  box-shadow:
+    inset 0 -3px 0 0 #fd0,
+    0 4px 0 0 black,
+    0 -6px 0 3px white;
+}
+
+.visual-editor__menu .visual-editor__menu-button {
+  height: 38px;
+  width: 40px;
+  margin: 0 5px 2px 0;
+  padding: 2px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-editor__menu-button:not(:hover) {
+  box-shadow: none;
+}
+
+.visual-editor__menu-select {
+  min-width: 0;
+  margin: 0 10px 0 5px;
+}
+
+.visual-editor__menu-heading-select {
+  width: 120px;
+}
+
+.visual-editor__menu-text-block-select {
+  width: 154px;
+  margin-right: 5px;
+}
+
+.visual-editor__menu-insert-select {
+  width: 82px;
+}

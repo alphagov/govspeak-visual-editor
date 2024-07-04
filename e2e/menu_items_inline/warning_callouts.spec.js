@@ -17,7 +17,7 @@ test("renders warning callout menu items with expected disabled states", async (
   page,
 }) => {
   await page.locator("#editor .help-notice").click();
-  await expect(page.locator(".menubar")).toBeVisible();
+  await expect(page.locator(".visual-editor__menu")).toBeVisible();
 
   const enabledMenuButtons = ["Link", "Email link"];
   const disabledMenuButtons = ["Bullet list", "Ordered list"];
