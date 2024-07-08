@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- Add remove button to link tooltip
+
 ## 1.4.0
 
 - Small adjustments to link tooltips

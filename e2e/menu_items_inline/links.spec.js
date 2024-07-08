@@ -60,6 +60,17 @@ test.describe("Link", () => {
         .getByText("example.com", { exact: true }),
     ).toBeVisible();
   });
+
+  test("Links can be removed using the tooltip", async ({ page }) => {
+    await page
+      .locator("#editor")
+      .getByText("Example link", { exact: true })
+      .click();
+    await page.getByText("Remove link", { exact: true }).click();
+    await expect(
+      page.locator("#editor").getByText("Example link", { exact: true }),
+    ).not.toHaveAttribute("href");
+  });
 });
 
 test.describe("Email link", () => {
