@@ -9,6 +9,7 @@
 ## Unreleased
 
 - Add remove button to link tooltip
+- Fix tabbing through the toolbar in Firefox - [PR](https://github.com/alphagov/govspeak-visual-editor/pull/123)
 
 ## 1.4.0
 
