@@ -91,15 +91,11 @@ See [Semantic Versioning](https://semver.org/) for more information.
 
 8. Once the pull request is approved, merge into the `main` branch. This action will trigger the CI to publish the new version to NPM. A [dependabot](https://github.com/dependabot) pull request will automatically be raised in relevant applications.
 
-## GA4 Tracking
+## Custom events
 
-GA4 tracking data attributes have been added to the following components of the Visual Editor:
+The following events are emitted from the Visual Editor. Add event listeners to any parent wrapper to implement behaviour in response to these actions (e.g. for tracking purposes.)
 
-- Toolbar button clicks
-
-The following events are emitted from the Visual Editor. Please add an event handler to any parent wrapper to handle the event for tracking purposes.
-
+- `visualEditorButtonClick` - emitted when a button is clicked in the toolbar. Details sent with the event can be accessed via:
+  - `event.detail.buttonText` which returns the title of the selected button
 - `visualEditorSelectChange` - emitted when select values change on dropdowns in the toolbar. Details sent with the event can be accessed via:
   - `event.detail.selectText` which returns the text of the selected option in the dropdown
-
-**Please note**: data-module `ga4-event-tracker` needs to be initialised in the parent application that is importing the visual editor for this tracking to work.

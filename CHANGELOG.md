@@ -9,6 +9,7 @@
 ## Unreleased
 
 - Fix bug with list item deletion
+- Refactor button tracking
 
 ## 1.5.0
 
