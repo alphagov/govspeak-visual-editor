@@ -105,6 +105,37 @@ test.describe("bulleted list", () => {
     );
   });
 
+  test("should jump back to previous list item when pressing backspace at the start of a list item", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").focus();
+    await page.keyboard.type("New line\n");
+
+    await page.getByText("New line").click();
+    await page.getByTitle("Bullet list").click();
+    await page.getByText("New line").selectText();
+    await page.keyboard.type("test 1");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("2");
+    await page.keyboard.press("ArrowLeft");
+    await page.keyboard.press("Backspace");
+
+    await expect(
+      page.locator("#editor ul li").getByText("test 12"),
+    ).toBeVisible();
+  });
+
+  test("should exit the list when pressing backspace in an empty list", async ({
+    page,
+  }) => {
+    await page.locator("#editor .ProseMirror.govspeak").selectText();
+    await page.keyboard.press("Backspace");
+    await page.getByTitle("Bullet list").click();
+    await expect(page.locator("#editor ul li")).toHaveCount(1);
+    await page.keyboard.press("Backspace");
+    await expect(page.locator("#editor ul li")).toHaveCount(0);
+  });
+
   test("should toggle bullet list item for existing paragraph line", async ({
     page,
   }) => {
