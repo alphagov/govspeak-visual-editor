@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+- Fix bug with list item deletion
+
 ## 1.5.0
 
 - Add remove button to link tooltip
