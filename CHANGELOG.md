@@ -8,6 +8,8 @@
 
 ## Unreleased
 
+## 2.0.0
+
 - Fix bug with list item deletion
 - Refactor button tracking
 
