@@ -18,3 +18,13 @@ test("does not load invalid image from the index file in the editor", async ({
     page.locator('#editor [src="/example-2.jpg"]'),
   ).not.toBeAttached();
 });
+
+test("parses pasted markdown", async ({ page }) => {
+  await expect(page.locator('#editor [src="/example.jpg"]')).toHaveCount(1);
+  await page.locator('#editor [contenteditable="true"]').focus();
+  await page.keyboard.type("[Image: example.jpg]\n");
+  await page.locator("#editor").getByText("[Image: example.jpg]").selectText();
+  await page.keyboard.press("ControlOrMeta+X");
+  await page.keyboard.press("ControlOrMeta+V");
+  await expect(page.locator('#editor [src="/example.jpg"]')).toHaveCount(2);
+});
