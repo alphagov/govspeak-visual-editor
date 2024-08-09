@@ -4,6 +4,19 @@
 @import "./prosemirror-overrides";
 @import "./tooltip";
 
+.visual-editor__highlight--image-error {
+  border: 3px solid #d4351c;
+  background: url("/lib/assets/placeholder.jpg");
+  background-size: cover;
+  aspect-ratio: 3 / 2;
+
+  img {
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 .visual-editor__highlight--error {
   border-bottom: 2px dashed #d4351c;
   margin-bottom: -2px;
