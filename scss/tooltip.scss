@@ -18,6 +18,11 @@
   max-width: 65%;
 }
 
+.visual-editor__tooltip--column {
+  flex-direction: column;
+  padding: 20px 20px 0;
+}
+
 .visual-editor__tooltip-link {
   word-break: break-all;
 }

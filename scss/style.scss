@@ -4,6 +4,11 @@
 @import "./prosemirror-overrides";
 @import "./tooltip";
 
+.visual-editor__block--error {
+  border: 3px solid #d4351c;
+  box-sizing: border-box;
+}
+
 .visual-editor__highlight--error {
   border-bottom: 2px dashed #d4351c;
   margin-bottom: -2px;
