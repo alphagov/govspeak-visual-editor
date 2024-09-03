@@ -8,6 +8,11 @@
 
 ## Unreleased
 
+## 3.0.0
+
+- Accept an options parameter to pass images from the parent application to the visual editor
+- Add images to the schema and validation and paste plugins
+
 ## 2.0.0
 
 - Fix bug with list item deletion
