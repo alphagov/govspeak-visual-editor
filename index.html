@@ -13,6 +13,8 @@
       <p><a href="mailto:someone@example.com">someone@example.com</a></p>
       <h2>This is an H2 heading</h2>
       <h3>This is an H3 heading</h3>
+      <img src="/example.jpg" />
+      <img src="/example-2.jpg" />
       <ol>
         <li><p>First</p></li>
         <li><p>Second</p></li>
@@ -88,6 +90,11 @@
       document.querySelector("#content"),
       document.querySelector("#editor"),
       document.querySelector("#govspeak"),
+      {
+        images: {
+          "/example.jpg": "[Image: example.jpg]",
+        },
+      },
     );
   </script>
 </html>
