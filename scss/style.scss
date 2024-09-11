@@ -3,6 +3,7 @@
 @import "./menu";
 @import "./prosemirror-overrides";
 @import "./tooltip";
+@import "prosemirror-tables/style/tables.css";
 
 .visual-editor__highlight--image-error {
   border: 3px solid #d4351c;
@@ -20,4 +21,15 @@
 .visual-editor__highlight--error {
   border-bottom: 2px dashed #d4351c;
   margin-bottom: -2px;
+}
+
+#editor .govspeak table {
+  display: table;
+  width: auto;
+
+  td {
+    border: 1px solid black;
+    padding: 10px;
+    min-width: 100px;
+  }
 }
