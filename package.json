@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "govuk-frontend": "^4.8.0",
+    "markdown-it-table": "^4.1.1",
     "prosemirror-example-setup": "^1.2.2",
     "prosemirror-keymap": "^1.2.2",
     "prosemirror-markdown": "^1.13.0",
