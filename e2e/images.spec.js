@@ -49,10 +49,8 @@ test("invalid markdown is pasted with placeholder", async ({ page }) => {
   await page.keyboard.press("ControlOrMeta+X");
   await page.keyboard.press("ControlOrMeta+V");
   await expect(
-    page.locator(".visual-editor__highlight--image-error [markdown]"),
-  ).toBeVisible();
-  await page
-    .locator(".visual-editor__highlight--image-error [markdown]")
-    .click();
+    page.locator(".visual-editor__highlight--image-error"),
+  ).toHaveCount(2);
+  await page.locator(".visual-editor__highlight--image-error").first().click();
   await expect(page.getByText("Image not found.")).toBeVisible();
 });
