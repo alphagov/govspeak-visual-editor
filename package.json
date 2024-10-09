@@ -36,7 +36,7 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
     "govuk_publishing_components": "github:alphagov/govuk_publishing_components",
-    "jsdom": "^25.0.0",
+    "jsdom": "^25.0.1",
     "prettier": "^3.3.2",
     "prosemirror-test-builder": "^1.1.1",
     "sass": "^1.79.4",
