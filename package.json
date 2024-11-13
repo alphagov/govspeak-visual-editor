@@ -27,7 +27,7 @@
     "prettier:write": "prettier . --write"
   },
   "devDependencies": {
-    "@playwright/test": "^1.48.0",
+    "@playwright/test": "^1.48.2",
     "@types/node": "^22.5.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
