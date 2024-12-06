@@ -40,7 +40,7 @@
     "prettier": "^3.3.3",
     "prosemirror-test-builder": "^1.1.1",
     "sass": "^1.79.4",
-    "vite": "^5.4.8",
+    "vite": "^6.0.3",
     "vite-plugin-static-copy": "^2.1.0",
     "vitest": "^2.1.1"
   },
