@@ -45,7 +45,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "govuk-frontend": "^4.8.0",
+    "govuk-frontend": "^5.9.0",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-keymap": "^1.2.3",
     "prosemirror-markdown": "^1.13.2",
