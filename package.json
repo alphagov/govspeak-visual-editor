@@ -41,7 +41,7 @@
     "prosemirror-test-builder": "^1.1.1",
     "sass": "^1.85.1",
     "vite": "^5.4.8",
-    "vite-plugin-static-copy": "^2.2.0",
+    "vite-plugin-static-copy": "^2.3.0",
     "vitest": "^3.0.8"
   },
   "dependencies": {
