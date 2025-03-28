@@ -42,7 +42,7 @@
     "sass": "^1.85.1",
     "vite": "^5.4.15",
     "vite-plugin-static-copy": "^2.3.0",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "govuk-frontend": "^4.8.0",
