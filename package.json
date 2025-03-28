@@ -48,7 +48,7 @@
     "govuk-frontend": "^4.8.0",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-keymap": "^1.2.2",
-    "prosemirror-markdown": "^1.13.1",
+    "prosemirror-markdown": "^1.13.2",
     "prosemirror-model": "^1.25.0",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.10.2",
