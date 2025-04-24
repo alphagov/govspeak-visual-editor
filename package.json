@@ -51,7 +51,7 @@
     "prosemirror-markdown": "^1.13.2",
     "prosemirror-model": "^1.25.0",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-transform": "^1.10.3",
+    "prosemirror-transform": "^1.10.4",
     "prosemirror-view": "^1.39.1"
   }
 }
