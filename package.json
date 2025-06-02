@@ -39,7 +39,7 @@
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "prosemirror-test-builder": "^1.1.1",
-    "sass": "^1.89.0",
+    "sass": "^1.89.1",
     "vite": "^5.4.19",
     "vite-plugin-static-copy": "^3.0.0",
     "vitest": "^3.1.4"
