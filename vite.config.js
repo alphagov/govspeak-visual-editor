@@ -13,7 +13,7 @@ export default {
     preprocessorOptions: {
       scss: {
         quietDeps: true,
-        includePaths: [
+        loadPaths: [
           "node_modules/govuk-frontend",
           "node_modules/govuk_publishing_components/app/assets/stylesheets",
         ],
